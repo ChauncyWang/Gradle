@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<JFrame xmlns="http://www.w3school.com.cn"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.w3school.com.cn swing.xsd"
+        id="frameMain"
+        width="800"
+        height="600"
+        x="1"
+        y="1"
+        resizable="false">
+    <JPanel id="panelMain" width="800" height="600" x="0" y="0">
+        <JTextArea id="textareaMsg"
+                   enabled="false" lineWrap="true" child="false"
+                   selectedTextColor="00ff00" selectionColor="0000ff"
+                   disabledTextColor="ff0000"
+                   background="000000" foreground="ff0000"/>
+        <JTextField id="ss" width="500" height="50" x="0" y="400"/>
+        <JPanel id="panelRight" width="300" height="450" x="500" y="0">
+            <JButton id="button1" text="SS" width="50" height="50" x="1" y="1"/>
+            <JButton id="button2" text="SssS" width="50" height="50" x="11" y="51"/>
+            <JLabel id="jlabel1" width="100" height="100" x="100" y="100"/>
+        </JPanel>
+        <JScrollPane id="scrollPanelMsg" ref="textareaMsg"
+                     width="500" height="400" x="0" y="0"
+        />
+    </JPanel>
+</JFrame>

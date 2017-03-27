@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://www.w3school.com.cn"
+           xmlns="http://www.w3school.com.cn"
+           elementFormDefault="qualified">
+
+    <!-- 主框架 -->
+    <xs:element name="JFrame">
+        <xs:complexType>
+            <xs:complexContent>
+                <xs:extension base="Container">
+                    <xs:sequence>
+                        <xs:element ref="JPanel" minOccurs="0" maxOccurs="unbounded"/>
+                    </xs:sequence>
+                    <xs:attribute name="resizable" type="xs:boolean"/>
+                </xs:extension>
+            </xs:complexContent>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- 组件 基础属性 类型 -->
+    <xs:complexType id="Container" name="Container">
+        <xs:attribute name="id" type="xs:string" use="required"/>
+        <xs:attribute name="width" type="xs:int"/>
+        <xs:attribute name="height" type="xs:int"/>
+        <xs:attribute name="x" type="xs:int"/>
+        <xs:attribute name="y" type="xs:int"/>
+        <xs:attribute name="enabled" type="xs:boolean"/>
+        <xs:attribute name="visible" type="xs:boolean"/>
+        <xs:attribute name="background" type="xs:hexBinary"/>
+        <xs:attribute name="foreground" type="xs:hexBinary"/>
+        <xs:attribute name="child" type="xs:boolean"/>
+    </xs:complexType>
+
+    <!-- JLabel 类型 -->
+    <xs:complexType name="JLabel">
+        <xs:complexContent>
+            <xs:extension base="Container">
+                <xs:attribute name="displayedIcon" type="xs:string"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <!-- JPanel 类型 -->
+    <xs:complexType name="JPanel">
+        <xs:complexContent>
+            <xs:extension base="Container">
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <!-- Panel 面板 -->
+    <xs:element name="JPanel">
+        <xs:complexType>
+            <xs:complexContent>
+                <xs:extension base="Container">
+                    <xs:sequence>
+                        <xs:element name="JButton" minOccurs="0" maxOccurs="unbounded" type="Button"/>
+                        <xs:element name="JList" minOccurs="0" maxOccurs="unbounded" type="list"/>
+                        <xs:element name="JRadioButton" minOccurs="0" maxOccurs="unbounded" type="list"/>
+                        <xs:element name="JTextArea" minOccurs="0" maxOccurs="unbounded" type="JTextArea"/>
+                        <xs:element name="JTextField" minOccurs="0" maxOccurs="unbounded" type="JTextField"/>
+                        <xs:element name="JLabel" minOccurs="0" maxOccurs="unbounded" type="JLabel"/>
+                        <xs:element ref="JPanel" minOccurs="0" maxOccurs="unbounded"/>
+                        <xs:element name="JScrollPane" minOccurs="0" maxOccurs="unbounded" type="JScrollPane"/>
+                    </xs:sequence>
+                </xs:extension>
+            </xs:complexContent>
+        </xs:complexType>
+        <xs:unique name="idUnique">
+            <xs:selector xpath="*"/>
+            <xs:field xpath="@id"/>
+        </xs:unique>
+    </xs:element>
+
+    <!-- JScrollPane -->
+    <xs:complexType name="JScrollPane">
+        <xs:complexContent>
+            <xs:extension base="Container">
+                <xs:attribute name="ref" type="xs:string" use="required"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+
+    <!-- JTextComponent 属性 -->
+    <xs:complexType name="JTextComponent">
+        <xs:complexContent>
+            <xs:extension base="Container">
+                <xs:attribute name="text" type="xs:string"/>
+                <xs:attribute name="disabledTextColor" type="xs:hexBinary"/>
+                <xs:attribute name="selectedTextColor" type="xs:hexBinary"/>
+                <xs:attribute name="selectionColor" type="xs:hexBinary"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <!-- JTextArea 属性 -->
+    <xs:complexType name="JTextArea">
+        <xs:complexContent>
+            <xs:extension base="JTextComponent">
+                <xs:attribute name="columns" type="xs:int"/>
+                <xs:attribute name="rows" type="xs:int"/>
+                <xs:attribute name="lineWrap" type="xs:boolean"/>
+                <xs:attribute name="wrapStyleWord" type="xs:boolean"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <!-- JTextField 类型 -->
+    <xs:complexType name="JTextField">
+        <xs:complexContent>
+            <xs:extension base="JTextComponent">
+
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <!-- JButton 属性 类型 -->
+    <xs:complexType name="Button">
+        <xs:complexContent>
+            <xs:extension base="Container">
+                <xs:attribute name="text" type="xs:string"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <!-- JList 属性 类型 -->
+    <xs:complexType name="list">
+        <xs:complexContent>
+            <xs:extension base="Container"/>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <!-- Color 类型 -->
+    <xs:simpleType name="color">
+        <xs:restriction>
+            <xs:enumeration value="black"/>
+            <xs:enumeration value="blue"/>
+            <xs:enumeration value="cyan"/>
+            <xs:enumeration value="darkGray"/>
+            <xs:enumeration value="gray"/>
+            <xs:enumeration value="green"/>
+            <xs:enumeration value="lightGray"/>
+            <xs:enumeration value="magenta"/>
+            <xs:enumeration value="orange"/>
+            <xs:enumeration value="pink"/>
+            <xs:enumeration value="red"/>
+            <xs:enumeration value="white"/>
+            <xs:enumeration value="yellow"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+</xs:schema>

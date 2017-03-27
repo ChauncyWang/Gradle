@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chauncy.mybatis.entity.Classes">
+
+    <!-- 多表联合查询 -->
+    <select id="select" resultMap="classResultMap">
+        SELECT * FROM class c,student s,teacher t WHERE
+            c.c_id = s.c_id AND t.t_id = c.t_id AND c.c_id = #{id}
+    </select>
+
+    <!-- 多条查询语句查询 -->
+    <select id="select2" resultMap="classResultMap2">
+        SELECT * FROM class WHERE c_id = #{id}
+    </select>
+    <select id="selectTeacher" resultType="com.chauncy.mybatis.entity.Teacher">
+        SELECT t_id id,t_name name FROM teacher WHERE t_id = #{id}
+    </select>
+    <select id="selectStudent" resultType="com.chauncy.mybatis.entity.Student">
+        SELECT s_id id,s_name name FROM student WHERE c_id = #{id}
+    </select>
+    <resultMap id="classResultMap" type="com.chauncy.mybatis.entity.Classes">
+        <id property="id" column="c_id"/>
+        <result property="name" column="c_name"/>
+        <association property="teacher" javaType="com.chauncy.mybatis.entity.Teacher">
+            <id property="id" column="t_id"/>
+            <result property="name" column="t_name"/>
+        </association>
+        <collection property="students" ofType="com.chauncy.mybatis.entity.Student">
+            <id property="id" column="s_id"/>
+            <result property="name" column="s_name"/>
+        </collection>
+    </resultMap>
+
+    <resultMap id="classResultMap2" type="com.chauncy.mybatis.entity.Classes">
+        <id property="id" column="c_id"/>
+        <result property="name" column="c_name"/>
+        <association property="teacher" column="t_id" select="selectTeacher"/>
+        <collection property="students" column="c_id" select="selectStudent"/>
+    </resultMap>
+</mapper>

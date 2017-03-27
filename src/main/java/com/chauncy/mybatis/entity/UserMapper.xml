@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.chauncy.mybatis.entity.User">
+    <insert id="insertUser" parameterType="User">
+        INSERT INTO users (id, name, sex, age)
+            VALUE (#{id},#{name},#{sex},#{myage})
+    </insert>
+    <select id="selectUser" resultMap="map">
+        SELECT * FROM users WHERE id = #{id}
+    </select>
+
+    <select id="selectUsers" resultType="User">
+        SELECT * FROM users
+    </select>
+    <resultMap id="map" type="User">
+        <result property="age" column="age"/>
+    </resultMap>
+</mapper>

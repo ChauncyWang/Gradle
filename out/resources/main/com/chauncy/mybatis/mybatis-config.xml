@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <properties resource="com/chauncy/mybatis/db.properties"/>
+
+    <settings>
+        <setting name="logImpl" value="LOG4J"/>
+    </settings>
+    <typeAliases>
+        <typeAlias type="com.chauncy.mybatis.entity.User" alias="User"/>
+    </typeAliases>
+    <typeHandlers>
+        <!--
+        typeHandler handler="com.chauncy.mybatis.entity.UserTypeHandler"/
+        -->
+    </typeHandlers>
+
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="${driver}"/>
+                <property name="url" value="${url}"/>
+                <property name="username" value="${user}"/>
+                <property name="password" value="${password}"/>
+            </dataSource>
+        </environment>
+
+    </environments>
+    <mappers>
+        <mapper resource="com/chauncy/mybatis/entity/UserMapper.xml"/>
+        <mapper resource="com/chauncy/mybatis/entity/ClassesMapper.xml"/>
+    </mappers>
+</configuration>

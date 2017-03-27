@@ -18,6 +18,9 @@ public class User {
 	 */
 	private UserInfo userInfo;
 
+	/**
+	 * 默认构造函数
+	 */
 	public User() {
 	}
 

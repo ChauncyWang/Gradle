@@ -1,6 +1,7 @@
 package com.chauncy.niochet.dao;
 
 import com.chauncy.niochet.entity.User;
+import com.chauncy.niochet.entity.UserInfo;
 
 /**
  * 用户dao
@@ -8,16 +9,27 @@ import com.chauncy.niochet.entity.User;
  */
 public interface UserDao {
 	/**
-	 * 根据
-	 * @param id
-	 * @return
+	 * 根据根据id获取完整用户信息
+	 *
+	 * @param id 用户id
+	 * @return 用户信息
 	 */
 	User getUser(String id);
 
 	/**
-	 * @param id
-	 * @param password
-	 * @return
+	 * 根据根据id,pw获取完整用户信息
+	 *
+	 * @param id       用户id
+	 * @param password 密码
+	 * @return 用户信息
 	 */
 	User getUser(String id, String password);
+
+	/**
+	 * 根据id获取用户信息
+	 *
+	 * @param id 用户id
+	 * @return 用户信息
+	 */
+	UserInfo getUserInfo(String id);
 }

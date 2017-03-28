@@ -6,7 +6,7 @@
 
 <configuration>
     <!-- 加载属性 文件 -->
-    <properties resource="com/chauncy/niochet/dao/db.properties"/>
+    <properties resource="com/chauncy/niochet/services/db.properties"/>
 
     <!-- 设置 -->
     <settings>
@@ -32,6 +32,6 @@
     </environments>
 
     <mappers>
-        <mapper resource="com/chauncy/niochet/entity/mapper/UserMapper.xml"/>
+        <mapper resource="com/chauncy/niochet/services/mapper/UserMapper.xml"/>
     </mappers>
 </configuration>

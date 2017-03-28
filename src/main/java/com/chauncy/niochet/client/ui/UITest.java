@@ -1,7 +1,7 @@
-package com.chauncy.niochet.ui;
+package com.chauncy.niochet.client.ui;
 
 
-import com.chauncy.niochet.ui.loginModule.LoginFrame;
+import com.chauncy.niochet.client.ui.loginModule.LoginFrame;
 
 import javax.swing.*;
 

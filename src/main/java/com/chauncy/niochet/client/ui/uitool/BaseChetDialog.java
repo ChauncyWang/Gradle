@@ -1,12 +1,11 @@
-package com.chauncy.niochet.ui.uitool;
+package com.chauncy.niochet.client.ui.uitool;
 
-import com.chauncy.niochet.ui.BackGroundPanel;
-import com.chauncy.niochet.ui.TitleBar;
+import com.chauncy.niochet.client.ui.BackGroundPanel;
 
 import javax.swing.*;
 import java.awt.*;
 
-import static com.chauncy.niochet.ui.uitool.ImageTool.load;
+import static com.chauncy.niochet.client.ui.uitool.ImageTool.load;
 
 /**
  * 所有

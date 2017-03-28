@@ -1,5 +1,7 @@
 package com.chauncy.niochet;
 
+import com.chauncy.niochet.entity.User;
+import com.chauncy.niochet.entity.UserInfo;
 import com.chauncy.niochet.services.UserService;
 
 
@@ -9,10 +11,8 @@ import com.chauncy.niochet.services.UserService;
  */
 public class Test {
 	public static void main(String[] args) {
-		System.out.println(
-				new UserService().login("110", "1100"));
-
-		System.out.println(
-				new UserService().getUserInfo("110"));
+		UserInfo userInfo = new UserInfo("111", "昵称", "签名");
+		User user = new User(userInfo.getId(), "密码", userInfo);
+		System.out.println(new UserService().addUser(user));
 	}
 }

@@ -1,8 +1,7 @@
-package com.chauncy.niochet.ui.loginModule;
+package com.chauncy.niochet.client.ui.loginModule;
 
-import com.chauncy.niochet.ui.BaseChetFrame;
-import com.chauncy.niochet.ui.HeadImageLabel;
-import com.chauncy.niochet.ui.uitool.BaseChetDialog;
+import com.chauncy.niochet.client.ui.BaseChetFrame;
+import com.chauncy.niochet.client.ui.HeadImageLabel;
 import com.chauncy.niochet.util.NetMessage;
 import com.chauncy.niochet.util.NetMessageType;
 import com.chauncy.niochet.util.NetTools;

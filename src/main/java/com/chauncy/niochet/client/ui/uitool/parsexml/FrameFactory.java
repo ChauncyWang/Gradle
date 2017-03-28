@@ -1,4 +1,4 @@
-package com.chauncy.niochet.ui.uitool.parsexml;
+package com.chauncy.niochet.client.ui.uitool.parsexml;
 
 import static com.chauncy.niochet.util.Dom4lTool.getRoot;
 

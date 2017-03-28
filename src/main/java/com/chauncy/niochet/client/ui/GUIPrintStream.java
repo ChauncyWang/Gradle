@@ -1,4 +1,4 @@
-package com.chauncy.niochet.ui;
+package com.chauncy.niochet.client.ui;
 
 import javax.swing.*;
 import java.io.OutputStream;

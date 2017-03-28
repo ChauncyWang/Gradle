@@ -1,4 +1,4 @@
-package com.chauncy.niochet.ui.loginModule;
+package com.chauncy.niochet.client.ui.loginModule;
 
 import javax.swing.*;
 import java.awt.*;

@@ -1,4 +1,4 @@
-package com.chauncy.niochet.ui.uitool.parsexml;
+package com.chauncy.niochet.client.ui.uitool.parsexml;
 
 import org.dom4j.Element;
 
@@ -14,7 +14,7 @@ public class ParseLabel extends ParseContainer {
 	public Container parse(Element element) throws Exception {
 		JLabel jLabel = (JLabel) super.parse(element);
 
-		ImageIcon imageIcon = new ImageIcon(ClassLoader.getSystemResource("com/chauncy/niochet/ui/res/1.jpg"));
+		ImageIcon imageIcon = new ImageIcon(ClassLoader.getSystemResource("com/chauncy/niochet/client/ui/res/1.jpg"));
 		imageIcon.setImage(imageIcon.getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT));
 		jLabel.setIcon(imageIcon);
 

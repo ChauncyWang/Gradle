@@ -1,11 +1,13 @@
-package com.chauncy.niochet.ui;
+package com.chauncy.niochet.client.ui;
 
+
+import com.chauncy.niochet.client.ui.uitool.ImageTool;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-import static com.chauncy.niochet.ui.uitool.ImageTool.load;
+import static com.chauncy.niochet.client.ui.uitool.ImageTool.load;
 
 /**
  * 自定义的标题框
@@ -44,8 +46,8 @@ public class TitleBar extends JPanel implements ActionListener, MouseListener, M
 	}
 
 	private void initUI() {
-		ImageIcon minIcon = load("minButton.png", H - 5, H - 5);
-		ImageIcon closeIcon = load("closeButton.png", H - 5, H - 5);
+		ImageIcon minIcon = ImageTool.load("minButton.png", H - 5, H - 5);
+		ImageIcon closeIcon = ImageTool.load("closeButton.png", H - 5, H - 5);
 
 		minimizeButton = new JButton();
 		minimizeButton.setIcon(minIcon);

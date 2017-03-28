@@ -32,4 +32,12 @@ public interface UserDao {
 	 * @return 用户信息
 	 */
 	UserInfo getUserInfo(String id);
+
+	/**
+	 * 添加 用户
+	 *
+	 * @param user 用户对象
+	 * @return 影响的数据条数
+	 */
+	boolean addUser(User user);
 }

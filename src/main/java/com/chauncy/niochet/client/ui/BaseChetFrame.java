@@ -1,10 +1,10 @@
-package com.chauncy.niochet.ui;
+package com.chauncy.niochet.client.ui;
 
 
 import javax.swing.*;
 import java.awt.*;
 
-import static com.chauncy.niochet.ui.uitool.ImageTool.load;
+import static com.chauncy.niochet.client.ui.uitool.ImageTool.load;
 
 
 /**

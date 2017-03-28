@@ -1,4 +1,4 @@
-package com.chauncy.niochet.ui.uitool;
+package com.chauncy.niochet.client.ui.uitool;
 
 import javax.swing.*;
 import java.awt.*;
@@ -15,7 +15,7 @@ public class ImageTool {
 	 * @return
 	 */
 	public static ImageIcon load(String url) {
-		String dir = "com/chauncy/niochet/ui/res/";
+		String dir = "com/chauncy/niochet/client/ui/res/";
 		url = dir + url;
 		ImageIcon imageIcon = new ImageIcon(ClassLoader.getSystemResource(url));
 

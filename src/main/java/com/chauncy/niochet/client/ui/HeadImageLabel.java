@@ -1,13 +1,12 @@
-package com.chauncy.niochet.ui;
+package com.chauncy.niochet.client.ui;
 
-import com.chauncy.niochet.ui.uitool.ImageTool;
+import com.chauncy.niochet.client.ui.uitool.ImageTool;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.geom.RoundRectangle2D;
-import java.util.Vector;
 
-import static com.chauncy.niochet.ui.uitool.ImageTool.load;
+import static com.chauncy.niochet.client.ui.uitool.ImageTool.load;
 
 /**
  * Created by chauncy on 17-3-23.
@@ -19,7 +18,7 @@ public class HeadImageLabel extends JLabel {
 		heads = new HeadImageLabel[10];
 		for (int i = 1; i <= 10; ++i) {
 			String url = String.format("headImages/head%d.jpg", i);
-			ImageIcon imageIcon = load(url,90,90);
+			ImageIcon imageIcon = ImageTool.load(url,90,90);
 			heads[i - 1] = new HeadImageLabel(imageIcon);
 		}
 	}

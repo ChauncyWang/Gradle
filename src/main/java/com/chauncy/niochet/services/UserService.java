@@ -4,6 +4,7 @@ import com.chauncy.niochet.dao.UserDao;
 import com.chauncy.niochet.entity.User;
 import com.chauncy.niochet.entity.UserInfo;
 import org.apache.ibatis.session.SqlSession;
+import org.apache.log4j.Logger;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -13,6 +14,7 @@ import java.util.Map;
  * Created by chauncy on 17-3-28.
  */
 public class UserService implements UserDao {
+	private static Logger logger = Logger.getLogger(UserService.class);
 	/**
 	 * 数据库会话
 	 */
@@ -33,6 +35,7 @@ public class UserService implements UserDao {
 		return getUser(id, password) != null;
 	}
 
+	/* ********************** Override Method ****************** */
 	@Override
 	public User getUser(String id) {
 		return null;
@@ -45,15 +48,31 @@ public class UserService implements UserDao {
 		map.put("id", id);
 		map.put("password", password);
 		//sql语句所在的mapper的具体位置
-		String mapper = "niochet.UserMapper.selectUser";
+		String sql = "niochet.UserMapper.selectUser";
 
-		User user = sqlSession.selectOne(mapper, map);
+		User user = sqlSession.selectOne(sql, map);
 		return user;
 	}
 
 	@Override
 	public UserInfo getUserInfo(String id) {
-		String mapper = "niochet.UserMapper.selectInfo";
-		return sqlSession.selectOne(mapper, id);
+		String sql = "niochet.UserMapper.selectUserInfo";
+		return sqlSession.selectOne(sql, id);
+	}
+
+	@Override
+	public boolean addUser(User user) {
+		String sql1 = "niochet.UserMapper.insertUser";
+		String sql2 = "niochet.UserMapper.insertUserInfo";
+
+		try {
+			sqlSession.insert(sql1, user);
+			sqlSession.insert(sql2, user.getUserInfo());
+			sqlSession.commit();
+			return true;
+		} catch (Exception e) {
+			logger.warn(e);
+			return false;
+		}
 	}
 }

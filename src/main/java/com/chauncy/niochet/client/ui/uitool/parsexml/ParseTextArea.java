@@ -1,6 +1,6 @@
-package com.chauncy.niochet.ui.uitool.parsexml;
+package com.chauncy.niochet.client.ui.uitool.parsexml;
 
-import com.chauncy.niochet.ui.GUIPrintStream;
+import com.chauncy.niochet.client.ui.GUIPrintStream;
 import org.dom4j.Element;
 
 import javax.swing.*;

@@ -1,10 +1,12 @@
 package com.chauncy.niochet.entity;
 
+import java.io.Serializable;
+
 /**
  * 用户类
  * Created by chauncy on 17-3-24.
  */
-public class User {
+public class User implements Serializable {
     /**
      * 用户 id
      */

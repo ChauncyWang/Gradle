@@ -8,18 +8,21 @@ import java.io.*;
  */
 public class ByteArrayTools {
 	public static int bytesToInt(byte[] bytes) {
-		int value;
-		value = (int) ((bytes[0] & 0xFF) | (bytes[1] & 0xFF00) |
-				(bytes[2] & 0xFF0000) | (bytes[3] & 0xFF000000));
+		int value = 0;
+		//由高位到低位
+		for (int i = 0; i < 4; i++) {
+			int shift = i * 8;
+			value += (bytes[i] & 0x000000FF) << shift;//往高位游
+		}
 		return value;
 	}
 
 	public static byte[] intToBytes(int i) {
 		byte[] bytes = new byte[4];
-		bytes[0] = (byte) (i & 0x000000FF);
-		bytes[1] = (byte) ((i & 0x0000FF00) >> 8);
-		bytes[2] = (byte) ((i & 0x00FF0000) >> 16);
-		bytes[3] = (byte) ((i & 0xFF000000) >> 24);
+		bytes[0] = (byte) (i & 0xFF);
+		bytes[1] = (byte) ((i >> 8) & 0xFF);
+		bytes[2] = (byte) ((i >> 16) & 0xFF);
+		bytes[3] = (byte) ((i >> 24) & 0xFF);
 		return bytes;
 	}
 

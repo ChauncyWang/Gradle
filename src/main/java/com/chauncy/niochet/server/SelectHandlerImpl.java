@@ -25,10 +25,11 @@ public class SelectHandlerImpl implements SelectHandler {
 	public SelectHandlerImpl() {
 		daemonThread = new DealHandlerDaemonThread(this);
 		dealHandlerThread = new MessageHandlerThread(this);
-		sessionFactory = new SessionFactory();
+		sessionFactory = SessionFactory.getSessionFactory();
 		daemonThread.start();
 		new Thread(dealHandlerThread, "消息处理线程").start();
 	}
+
 	@Override
 	public void acceptHandle(SelectionKey readyKey) {
 		Selector selector = readyKey.selector();
@@ -66,6 +67,7 @@ public class SelectHandlerImpl implements SelectHandler {
 			logger.debug(String.format("%s:%d的消息队列添加一条消息.", socket.getInetAddress(), socket.getPort()));
 		} catch (IOException e) {
 			logger.debug(e);
+			//e.printStackTrace();
 			logger.info(String.format("[%s:%d]断开了连接!", socket.getInetAddress(), socket.getPort()));
 
 			//关闭会话

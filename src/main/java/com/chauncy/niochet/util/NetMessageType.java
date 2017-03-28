@@ -3,18 +3,21 @@ package com.chauncy.niochet.util;
 /**
  * Created by chauncy on 17-3-17.
  */
-public class NetMessageType {
+public enum NetMessageType {
 	/**
 	 * 空消息
 	 */
-	public final static int NULL = 0;
+	NULL,
 	/**
 	 * 返回信息
 	 */
-	public final static int RETURN = 1;
+	RETURN,
 	/**
 	 * 登陆
 	 */
-	public final static int LOGIN = 100;
-
+	LOGIN,
+	/**
+	 * 注册
+	 */
+	REGISTER
 }

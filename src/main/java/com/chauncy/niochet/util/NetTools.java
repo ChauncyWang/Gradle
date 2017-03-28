@@ -41,7 +41,8 @@ public class NetTools {
 	public static void writeObject(Socket socket, Object object) throws IOException {
 		OutputStream os = socket.getOutputStream();
 		byte[] objects = objectToBytes(object);
-		os.write(intToBytes(objects.length));
+		byte[] length = intToBytes(objects.length);
+		os.write(length);
 		os.write(objects);
 
 		os.flush();

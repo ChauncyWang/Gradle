@@ -1,5 +1,6 @@
 package com.chauncy.niochet.server;
 
+import com.chauncy.niochet.util.NetMessageType;
 import org.apache.log4j.Logger;
 
 /**
@@ -30,6 +31,10 @@ public class MessageHandlerThread implements Runnable {
 				Node node = receives.dequeue();
 
 				logger.info(String.format("处理[%s:%d]的消息:[%s]", node.getIp(), node.getPort(), node.getMessage()));
+
+				if (node.getMessage().what == NetMessageType.REGISTER) {
+					new MessageActions().getAction(NetMessageType.REGISTER).execture(node);
+				}
 			} catch (Exception e) {
 				//logger.warn(e);
 				//没有消息时

@@ -9,8 +9,17 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class SessionFactory {
 	private ConcurrentHashMap<String, Session> map = null;
+	private static SessionFactory sessionFactory = null;
 
-	public SessionFactory() {
+	public static synchronized SessionFactory getSessionFactory() {
+		if(sessionFactory == null) {
+			sessionFactory = new SessionFactory();
+		}
+
+		return sessionFactory;
+	}
+
+	private SessionFactory() {
 		map = new ConcurrentHashMap<>();
 	}
 

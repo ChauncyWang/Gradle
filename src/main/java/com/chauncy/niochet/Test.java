@@ -14,5 +14,6 @@ public class Test {
 		UserInfo userInfo = new UserInfo("111", "昵称", "签名");
 		User user = new User(userInfo.getId(), "密码", userInfo);
 		System.out.println(new UserService().addUser(user));
+
 	}
 }

@@ -4,6 +4,7 @@ import com.chauncy.niochet.services.UserService;
 
 
 /**
+ * 测试类
  * Created by chauncy on 17-3-20.
  */
 public class Test {

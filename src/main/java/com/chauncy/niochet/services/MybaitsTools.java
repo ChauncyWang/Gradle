@@ -13,12 +13,16 @@ import java.io.InputStream;
 public class MybaitsTools {
 	private static SqlSession sqlSession = null;
 
-	public static SqlSession getSqlSession() {
+	/**
+	 * 获取数据库session
+	 *
+	 * @return 数据库会话
+	 */
+	public synchronized static SqlSession getSqlSession() {
 		if (sqlSession == null) {
+			//配置文件位置
 			String url = "com/chauncy/niochet/services/mybatis-config.xml";
-			System.out.println(url);
 			InputStream is = ClassLoader.getSystemResourceAsStream(url);
-
 			sqlSession = new SqlSessionFactoryBuilder().build(is).openSession();
 		}
 

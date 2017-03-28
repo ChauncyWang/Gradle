@@ -24,6 +24,12 @@ public class User {
 	public User() {
 	}
 
+	/**
+	 * 带参构造器
+	 * @param id id
+	 * @param password 密码
+	 * @param userInfo 用户信息
+	 */
 	public User(String id, String password, UserInfo userInfo) {
 		this.id = id;
 		this.password = password;

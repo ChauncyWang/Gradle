@@ -15,6 +15,8 @@ import static com.chauncy.util.NetTools.*;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
+import java.util.function.Predicate;
 
 /**
  * 所有消息的处理方式都在这里
@@ -28,7 +30,21 @@ public class MessageActions {
 
 	@Test
 	public void test() {
-		ClassScanner.getClasses("com.chauncy.niochet.server.actions");
+		Set<Class<?>> classSet = ClassScanner.getClasses("com.chauncy.niochet.server.actions");
+
+		classSet.stream().filter(aClass -> {
+			Class[] classes = aClass.getInterfaces();
+			for (Class c : classes) {
+				if (c.getSimpleName().equals("IAction")) {
+					return true;
+				}
+			}
+			return false;
+		});
+		for (Class<?> c : classSet) {
+			System.out.println(c.getName());
+			System.out.println(c.getSimpleName());
+		}
 	}
 
 	public MessageActions() {

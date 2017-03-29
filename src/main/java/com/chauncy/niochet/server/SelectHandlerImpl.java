@@ -1,14 +1,14 @@
 package com.chauncy.niochet.server;
 
-import com.chauncy.niochet.util.NetMessage;
+import com.chauncy.niochet.entity.NetMessage;
 import org.apache.log4j.Logger;
 
 import java.io.IOException;
 import java.net.Socket;
 import java.nio.channels.*;
 
-import static com.chauncy.niochet.util.NetTools.readObject;
-import static com.chauncy.niochet.util.NetTools.writeObject;
+import static com.chauncy.util.NetTools.readObject;
+import static com.chauncy.util.NetTools.writeObject;
 
 /**
  * 处理 网络连接 NIO 的各种状态
@@ -60,7 +60,7 @@ public class SelectHandlerImpl implements SelectHandler {
 			socket = socketChannel.socket();
 			NetMessage msg = (NetMessage) readObject(socketChannel);
 
-			Node node = new Node(socket.getInetAddress().getHostName(),
+			MessageNode node = new MessageNode(socket.getInetAddress().getHostName(),
 					socket.getPort(), msg);
 			receives.enqueue(node);
 

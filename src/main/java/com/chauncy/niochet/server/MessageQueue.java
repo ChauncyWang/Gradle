@@ -1,7 +1,5 @@
 package com.chauncy.niochet.server;
 
-import com.chauncy.niochet.util.NetMessage;
-
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 /**
@@ -9,37 +7,14 @@ import java.util.concurrent.ConcurrentLinkedQueue;
  * Created by chauncy on 17-3-19.
  */
 public class MessageQueue {
-	private ConcurrentLinkedQueue<Node> messages;
+	private ConcurrentLinkedQueue<MessageNode> messages;
 	public MessageQueue() {
 		messages = new ConcurrentLinkedQueue<>();
 	}
-	public synchronized Node dequeue() {
+	public synchronized MessageNode dequeue() {
 		return messages.remove();
 	}
-	public synchronized void enqueue(Node node) {
+	public synchronized void enqueue(MessageNode node) {
 		messages.add(node);
-	}
-}
-class Node{
-	private String ip;
-	private int port;
-	private NetMessage message;
-
-	public Node(String ip, int port, NetMessage message) {
-		this.ip = ip;
-		this.port = port;
-		this.message = message;
-	}
-
-	public String getIp() {
-		return ip;
-	}
-
-	public int getPort() {
-		return port;
-	}
-
-	public NetMessage getMessage() {
-		return message;
 	}
 }

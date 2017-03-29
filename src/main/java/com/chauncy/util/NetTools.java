@@ -1,4 +1,4 @@
-package com.chauncy.niochet.util;
+package com.chauncy.util;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -7,7 +7,7 @@ import java.net.Socket;
 import java.nio.ByteBuffer;
 import java.nio.channels.SocketChannel;
 
-import static com.chauncy.niochet.util.ByteArrayTools.*;
+import static com.chauncy.util.ByteArrayTools.*;
 
 /**
  * 在socket通道中帮助读取和写入对象的类

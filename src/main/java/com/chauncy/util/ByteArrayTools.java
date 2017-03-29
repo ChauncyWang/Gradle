@@ -1,4 +1,4 @@
-package com.chauncy.niochet.util;
+package com.chauncy.util;
 
 import java.io.*;
 

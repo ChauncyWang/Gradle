@@ -1,18 +1,11 @@
-package com.chauncy.niochet.util;
+package com.chauncy.util;
 
-import java.awt.*;
-import java.io.IOException;
 import java.io.InputStream;
-import java.util.Iterator;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.apache.log4j.Logger;
 import org.dom4j.Document;
-import org.dom4j.DocumentException;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
-
-import javax.swing.*;
 
 /**
  * Created by chauncy on 17-3-19.

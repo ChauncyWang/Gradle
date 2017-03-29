@@ -1,6 +1,7 @@
 package com.chauncy.niochet.server;
 
-import com.chauncy.niochet.util.NetMessageType;
+import com.chauncy.niochet.server.actions.MessageActions;
+import com.chauncy.niochet.entity.NetMessageType;
 import org.apache.log4j.Logger;
 
 /**
@@ -28,7 +29,7 @@ public class MessageHandlerThread implements Runnable {
 		MessageQueue receives = dealHandler.getReceives();
 		while (true) {
 			try {
-				Node node = receives.dequeue();
+				MessageNode node = receives.dequeue();
 
 				logger.info(String.format("处理[%s:%d]的消息:[%s]", node.getIp(), node.getPort(), node.getMessage()));
 

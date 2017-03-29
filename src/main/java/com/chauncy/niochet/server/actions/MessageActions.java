@@ -1,12 +1,16 @@
-package com.chauncy.niochet.server;
+package com.chauncy.niochet.server.actions;
 
 import com.chauncy.niochet.entity.User;
+import com.chauncy.niochet.server.Session;
+import com.chauncy.niochet.server.SessionFactory;
 import com.chauncy.niochet.services.UserService;
-import com.chauncy.niochet.util.NetMessage;
-import com.chauncy.niochet.util.NetMessageType;
+import com.chauncy.util.ClassScanner;
+import com.chauncy.niochet.entity.NetMessage;
+import com.chauncy.niochet.entity.NetMessageType;
 import org.apache.log4j.Logger;
+import org.junit.Test;
 
-import static com.chauncy.niochet.util.NetTools.*;
+import static com.chauncy.util.NetTools.*;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -22,11 +26,17 @@ public class MessageActions {
 	private UserService userService;
 	private SessionFactory sessionFactory;
 
+	@Test
+	public void test() {
+		ClassScanner.getClasses("com.chauncy.niochet.server.actions");
+	}
+
 	public MessageActions() {
 		userService = new UserService();
 		actions = new HashMap<>();
 		sessionFactory = SessionFactory.getSessionFactory();
 
+		// 处理注册事件
 		actions.put(NetMessageType.REGISTER, node -> {
 			User user = (User) node.getMessage().obj;
 			String res;
@@ -42,8 +52,6 @@ public class MessageActions {
 			} catch (IOException e) {
 				logger.info(e);
 			}
-
-
 		});
 	}
 

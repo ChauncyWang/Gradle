@@ -8,6 +8,7 @@ import com.chauncy.niochet.server.services.MybaitsTools;
  */
 public class ServerMain {
 	public static void main(String[] args) throws ClassNotFoundException {
+	    //第一次连接会有延迟，不知道原因呢
         MybaitsTools.getSqlSession();
 		NIOSocketThread nioSocketThread = new NIOSocketThread(10001);
 

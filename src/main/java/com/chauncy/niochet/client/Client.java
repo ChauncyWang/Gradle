@@ -20,11 +20,13 @@ public class Client {
 			Socket socket = new Socket(ip, port);
 
 			NetMessage netMessage = new NetMessage(NetMessageType.LOGIN, new String[]{"110","110"});
+			System.out.println(System.currentTimeMillis());
 			writeObject(socket, netMessage);
 			netMessage = (NetMessage) readObject(socket);
 			System.out.println(netMessage);
+			System.out.println(System.currentTimeMillis());
 
-			Thread.sleep(200000);
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

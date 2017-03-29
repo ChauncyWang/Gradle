@@ -17,4 +17,7 @@ public class MessageQueue {
 	public synchronized void enqueue(MessageNode node) {
 		messages.add(node);
 	}
+	public int getSize() {
+		return messages.size();
+	}
 }

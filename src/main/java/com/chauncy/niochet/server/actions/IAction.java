@@ -8,5 +8,5 @@ import com.chauncy.niochet.server.MessageNode;
  */
 @FunctionalInterface
 public interface IAction {
-	void execture(MessageNode node);
+	void execute(MessageNode node);
 }

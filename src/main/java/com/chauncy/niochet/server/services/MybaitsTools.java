@@ -1,4 +1,4 @@
-package com.chauncy.niochet.services;
+package com.chauncy.niochet.server.services;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
@@ -21,7 +21,7 @@ public class MybaitsTools {
 	public synchronized static SqlSession getSqlSession() {
 		if (sqlSession == null) {
 			//配置文件位置
-			String url = "com/chauncy/niochet/services/mybatis-config.xml";
+			String url = "com/chauncy/niochet/server/services/mybatis-config.xml";
 			InputStream is = ClassLoader.getSystemResourceAsStream(url);
 			sqlSession = new SqlSessionFactoryBuilder().build(is).openSession();
 		}

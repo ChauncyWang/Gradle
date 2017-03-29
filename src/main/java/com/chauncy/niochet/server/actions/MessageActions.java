@@ -1,22 +1,15 @@
 package com.chauncy.niochet.server.actions;
 
-import com.chauncy.niochet.entity.User;
-import com.chauncy.niochet.server.Session;
-import com.chauncy.niochet.server.SessionFactory;
-import com.chauncy.niochet.services.UserService;
-import com.chauncy.util.ClassScanner;
-import com.chauncy.niochet.entity.NetMessage;
 import com.chauncy.niochet.entity.NetMessageType;
+import com.chauncy.util.ClassScanner;
 import org.apache.log4j.Logger;
-import org.junit.Test;
 
-import static com.chauncy.util.NetTools.*;
-
-import java.io.IOException;
+import java.lang.reflect.Modifier;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
-import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 /**
  * 所有消息的处理方式都在这里
@@ -25,50 +18,36 @@ import java.util.function.Predicate;
 public class MessageActions {
 	private static Logger logger = Logger.getLogger(MessageActions.class);
 	private Map<NetMessageType, IAction> actions;
-	private UserService userService;
-	private SessionFactory sessionFactory;
-
-	@Test
-	public void test() {
-		Set<Class<?>> classSet = ClassScanner.getClasses("com.chauncy.niochet.server.actions");
-
-		classSet.stream().filter(aClass -> {
-			Class[] classes = aClass.getInterfaces();
-			for (Class c : classes) {
-				if (c.getSimpleName().equals("IAction")) {
-					return true;
-				}
-			}
-			return false;
-		});
-		for (Class<?> c : classSet) {
-			System.out.println(c.getName());
-			System.out.println(c.getSimpleName());
-		}
-	}
 
 	public MessageActions() {
-		userService = new UserService();
 		actions = new HashMap<>();
-		sessionFactory = SessionFactory.getSessionFactory();
+		scanner();
+	}
 
-		// 处理注册事件
-		actions.put(NetMessageType.REGISTER, node -> {
-			User user = (User) node.getMessage().obj;
-			String res;
-			if (userService.addUser(user)) {
-				res = "注册成功!";
-			} else {
-				res = "注册失败!";
-			}
-			NetMessage netMessage = new NetMessage(NetMessageType.RETURN, res);
-			Session session = sessionFactory.getSession(node.getIp(), node.getPort());
+	/**
+	 * 对包进行扫描,获取包中的action类并添加到action map中
+	 */
+	private void scanner() {
+		//进行包扫描
+		Set<Class<?>> classSet = ClassScanner.getClasses("com.chauncy.niochet.server.actions");
+		//将IAction的实现类进行过滤
+		classSet = classSet.stream().filter(aClass -> {
+					Class superClass = aClass.getSuperclass();
+					return superClass != null &&
+							"BaseAction".equals(superClass.getSimpleName());
+				}
+		).collect(Collectors.toSet());
+		//newInstance 类 并添加到 actionMap
+		for (Class<?> c : classSet) {
 			try {
-				writeObject(session.getSocketChannel(), netMessage);
-			} catch (IOException e) {
-				logger.info(e);
+				//生成新的IAction
+				BaseAction action = (BaseAction) c.newInstance();
+				//添加到actions 的 Map
+				actions.put(action.getMessageType(), action);
+			} catch (InstantiationException | IllegalAccessException e) {
+				e.printStackTrace();
 			}
-		});
+		}
 	}
 
 	/**

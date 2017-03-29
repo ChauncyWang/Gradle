@@ -15,6 +15,8 @@ public class MessageHandlerThread implements Runnable {
 	 */
 	private volatile SelectHandlerImpl dealHandler = null;
 
+	private static MessageActions actions = new MessageActions();
+
 	/**
 	 * 唯一的构造函数
 	 *
@@ -34,7 +36,7 @@ public class MessageHandlerThread implements Runnable {
 				logger.info(String.format("处理[%s:%d]的消息:[%s]", node.getIp(), node.getPort(), node.getMessage()));
 
 				if (node.getMessage().what == NetMessageType.REGISTER) {
-					new MessageActions().getAction(NetMessageType.REGISTER).execture(node);
+					actions.getAction(NetMessageType.REGISTER).execute(node);
 				}
 			} catch (Exception e) {
 				//logger.warn(e);

@@ -2,7 +2,7 @@ package com.chauncy.niochet;
 
 import com.chauncy.niochet.entity.User;
 import com.chauncy.niochet.entity.UserInfo;
-import com.chauncy.niochet.services.UserService;
+import com.chauncy.niochet.server.services.UserService;
 
 
 /**

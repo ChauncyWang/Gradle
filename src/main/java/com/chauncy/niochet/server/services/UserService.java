@@ -1,4 +1,4 @@
-package com.chauncy.niochet.services;
+package com.chauncy.niochet.server.services;
 
 import com.chauncy.niochet.dao.UserDao;
 import com.chauncy.niochet.entity.User;

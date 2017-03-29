@@ -20,6 +20,11 @@
         WHERE u_id = #{id}
     </select>
 
+    <select id="selectFriends" resultType="UserInfo">
+        SELECT *
+        FROM user_info
+    </select>
+
     <resultMap id="userMap" type="User">
         <id property="id" column="id"/>
         <result property="password" column="password"/>

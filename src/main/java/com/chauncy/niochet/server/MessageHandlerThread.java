@@ -35,9 +35,7 @@ public class MessageHandlerThread implements Runnable {
 
 				logger.info(String.format("处理[%s:%d]的消息:[%s]", node.getIp(), node.getPort(), node.getMessage()));
 
-				if (node.getMessage().what == NetMessageType.REGISTER) {
-					actions.getAction(NetMessageType.REGISTER).execute(node);
-				}
+				actions.getAction(node.getMessage().what).execute(node);
 			} catch (Exception e) {
 				//logger.warn(e);
 				//没有消息时

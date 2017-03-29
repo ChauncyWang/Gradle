@@ -18,10 +18,8 @@ public class Client {
 
 		try {
 			Socket socket = new Socket(ip, port);
-			UserInfo userInfo = new UserInfo("114100016", "王冲", "我真帅");
-			User user = new User(userInfo.getId(), "pw", userInfo);
 
-			NetMessage netMessage = new NetMessage(NetMessageType.REGISTER, user);
+			NetMessage netMessage = new NetMessage(NetMessageType.LOGIN, new String[]{"110","110"});
 			writeObject(socket, netMessage);
 			netMessage = (NetMessage) readObject(socket);
 			System.out.println(netMessage);

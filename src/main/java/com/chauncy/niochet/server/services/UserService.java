@@ -29,10 +29,17 @@ public class UserService implements UserDao {
 	 *
 	 * @param id       用户id
 	 * @param password 用户密码
-	 * @return 登录是否成功
+	 * @return 登录的用户信息
 	 */
-	public boolean login(String id, String password) {
-		return getUser(id, password) != null;
+	public UserInfo login(String id, String password) {
+		User user = getUser(id, password);
+		UserInfo info;
+		if(user == null){
+			info = new UserInfo();
+			info.setId(null);
+			return info;
+		}
+		return user.getUserInfo();
 	}
 
 	/* ********************** Override Method ****************** */

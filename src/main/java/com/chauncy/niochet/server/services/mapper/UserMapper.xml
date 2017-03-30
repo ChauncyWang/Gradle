@@ -19,9 +19,6 @@
         FROM user_info
         WHERE u_id = #{id}
     </select>
-
-
-
     <resultMap id="userMap" type="User">
         <id property="id" column="id"/>
         <result property="password" column="password"/>
@@ -32,7 +29,7 @@
     <!-- INSERT PART -->
     <!-- 遗留问题 如果出现重复值怎么判断 -->
     <insert id="insertUser" parameterType="User">
-        INSERT INTO user VALUE (#{id}, #{password})
+        INSERT INTO "user" VALUE (#{id}, #{password})
     </insert>
     <insert id="insertUserInfo" parameterType="UserInfo">
         INSERT INTO user_info VALUE (#{id}, #{nickName}, #{signature})

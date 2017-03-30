@@ -16,6 +16,8 @@
     <typeAliases>
         <typeAlias type="com.chauncy.niochet.entity.User" alias="User"/>
         <typeAlias type="com.chauncy.niochet.entity.UserInfo" alias="UserInfo"/>
+        <typeAlias type="com.chauncy.niochet.entity.Friend" alias="Friend"/>
+        <typeAlias type="com.chauncy.niochet.entity.FriendGroup" alias="FriendGroup"/>
     </typeAliases>
 
     <!-- 配置环境 -->

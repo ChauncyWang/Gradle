@@ -8,6 +8,6 @@
     </select>
 
     <resultMap id="friendMap" type="Friend">
-
+        <id column="" property="groups"/>
     </resultMap>
 </mapper>

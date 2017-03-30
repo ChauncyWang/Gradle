@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.7.17, for Linux (x86_64)
+-- MySQL dump 10.13  Distrib 5.7.13, for Win64 (x86_64)
 --
 -- Host: localhost    Database: chet
 -- ------------------------------------------------------
--- Server version	5.7.17-0ubuntu0.16.04.1
+-- Server version	5.7.13
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -16,14 +16,6 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Current Database: `chet`
---
-
-CREATE DATABASE /*!32312 IF NOT EXISTS*/ `chet` /*!40100 DEFAULT CHARACTER SET utf8 */;
-
-USE `chet`;
-
---
 -- Table structure for table `friend`
 --
 
@@ -32,12 +24,14 @@ DROP TABLE IF EXISTS `friend`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `friend` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `g_id` varchar(10) NOT NULL COMMENT '分组id',
   `u_id` varchar(10) NOT NULL COMMENT '用户id',
+  `g_name` varchar(10) NOT NULL COMMENT '分组名',
+  `f_id` varchar(10) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `fk_friend_u_id` (`g_id`),
   KEY `fk_friend_user` (`u_id`),
-  CONSTRAINT `fk_friend_user` FOREIGN KEY (`u_id`) REFERENCES `user` (`id`)
+  KEY `fk_friend_user_info` (`f_id`),
+  CONSTRAINT `fk_friend_user` FOREIGN KEY (`u_id`) REFERENCES `user_info` (`u_id`),
+  CONSTRAINT `fk_friend_user_info` FOREIGN KEY (`f_id`) REFERENCES `user_info` (`u_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -48,32 +42,6 @@ CREATE TABLE `friend` (
 LOCK TABLES `friend` WRITE;
 /*!40000 ALTER TABLE `friend` DISABLE KEYS */;
 /*!40000 ALTER TABLE `friend` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `group`
---
-
-DROP TABLE IF EXISTS `group`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `group` (
-  `u_id` varchar(10) DEFAULT NULL COMMENT '用户id',
-  `id` int(11) NOT NULL COMMENT '分组id',
-  `name` varchar(24) DEFAULT NULL COMMENT '分组名称',
-  PRIMARY KEY (`id`),
-  KEY `fk_group_user` (`u_id`),
-  CONSTRAINT `fk_group_user` FOREIGN KEY (`u_id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='朋友分组表';
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `group`
---
-
-LOCK TABLES `group` WRITE;
-/*!40000 ALTER TABLE `group` DISABLE KEYS */;
-/*!40000 ALTER TABLE `group` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -135,4 +103,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-03-29 20:54:30
+-- Dump completed on 2017-03-30 14:59:14

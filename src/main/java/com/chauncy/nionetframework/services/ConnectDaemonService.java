@@ -19,7 +19,7 @@ public class ConnectDaemonService extends Thread {
 	public ConnectDaemonService(StatusSessionService statusSessionService) {
 		super("连接守护服务");
 		this.statusSessionService = statusSessionService;
-		//this.setDaemon(true);
+		this.setDaemon(true);
 	}
 
 	@Override

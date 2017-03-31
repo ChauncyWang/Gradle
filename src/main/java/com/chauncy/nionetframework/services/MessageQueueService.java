@@ -32,7 +32,8 @@ public class MessageQueueService implements Runnable {
 	@Override
 	public void run() {
 		//消息处理啊啊啊
-		while (true) {
+		logger.info(Thread.currentThread().getName() + "开启...");
+		while (!Thread.currentThread().isInterrupted()) {
 			if (messageQueue.size() != 0) {
 				try {
 					MessageNode message = messageQueue.remove();
@@ -46,6 +47,7 @@ public class MessageQueueService implements Runnable {
 				}
 			}
 		}
+		logger.info(Thread.currentThread().getName() + "结束!");
 	}
 
 	/**

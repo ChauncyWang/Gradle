@@ -43,7 +43,7 @@ public class NIONet implements Runnable, SelectHandler {
 	public void run() {
 		logger.info(Thread.currentThread().getName() + "开启...");
 		connectDaemonService.start();
-		Thread thread = new Thread(this, "消息队列服务线程");
+		Thread thread = new Thread(messageQueueService, "消息队列服务线程");
 		thread.start();
 		Selector selector = null;
 		ServerSocketChannel serverChannel = null;
@@ -68,8 +68,9 @@ public class NIONet implements Runnable, SelectHandler {
 			}
 		} catch (IOException e) {
 			logger.info("在" + port + "端口开启监听服务发生了未知错误!" + e.getMessage());
-			connectDaemonService.interrupt();
+			thread.interrupt();
 		}
+		logger.info(Thread.currentThread().getName()+"结束!");
 	}
 
 	public ConnectDaemonService getConnectDaemonService() {

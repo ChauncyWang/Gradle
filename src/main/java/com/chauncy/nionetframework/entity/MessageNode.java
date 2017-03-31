@@ -1,8 +1,5 @@
 package com.chauncy.nionetframework.entity;
 
-
-import com.chauncy.nionetframework.entity.NetMessage;
-
 /**
  * 消息队列的节点
  * Created by chauncy on 17-3-29.

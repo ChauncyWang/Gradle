@@ -5,26 +5,29 @@ import com.chauncy.nionetframework.entity.MessageNode;
 import com.chauncy.nionetframework.entity.MessageQueue;
 import org.apache.log4j.Logger;
 
-import java.rmi.UnexpectedException;
-
 /**
- * 消息队列服务
+ * 读 消息队列服务
  * Created by chauncy on 17-3-31.
  */
-public class MessageQueueService implements Runnable {
-	private static Logger logger = Logger.getLogger(MessageQueueService.class);
+public class ReadMessageQueueService implements Runnable {
+	private static Logger logger = Logger.getLogger(ReadMessageQueueService.class);
 	/**
 	 * 消息队列
 	 */
 	private volatile MessageQueue messageQueue;
 	/**
+	 * 消息写出服务
+	 */
+	private WriteMessageQueueService writeMessageQueueService;
+	/**
 	 * 处理消息的函数集合
 	 */
 	private IMessageActions actions;
 
-	public MessageQueueService(IMessageActions actions) {
+	public ReadMessageQueueService(IMessageActions actions,WriteMessageQueueService writeMessageQueueService) {
 		if (actions == null)
 			throw new RuntimeException("MQ Actions is null!");
+		this.writeMessageQueueService = writeMessageQueueService;
 		this.actions = actions;
 		messageQueue = new MessageQueue();
 	}
@@ -40,8 +43,8 @@ public class MessageQueueService implements Runnable {
 					logger.debug(String.format("MQ[%d] 取出一条消息[%s:%d] 交由处理器 处理",
 							messageQueue.size(), message.getIp(), message.getPort()));
 					MessageNode result =
-
 							actions.getAction(message.getMessage().what).execute(message);
+					writeMessageQueueService.add(result);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

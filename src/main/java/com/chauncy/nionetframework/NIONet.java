@@ -5,8 +5,9 @@ import com.chauncy.nionetframework.action.IMessageActions;
 import com.chauncy.nionetframework.entity.MessageNode;
 import com.chauncy.nionetframework.entity.NetMessage;
 import com.chauncy.nionetframework.services.ConnectDaemonService;
-import com.chauncy.nionetframework.services.MessageQueueService;
+import com.chauncy.nionetframework.services.ReadMessageQueueService;
 import com.chauncy.nionetframework.services.StatusSessionService;
+import com.chauncy.nionetframework.services.WriteMessageQueueService;
 import org.apache.log4j.Logger;
 
 import java.io.IOException;
@@ -26,41 +27,69 @@ import static com.chauncy.nionetframework.util.NetTools.readObject;
  */
 public class NIONet implements Runnable, SelectHandler {
 	private static Logger logger = Logger.getLogger(NIONet.class);
+	/**
+	 * 连接守护服务
+	 */
 	private ConnectDaemonService connectDaemonService;
-	private MessageQueueService messageQueueService;
+	/**
+	 * 读取消息队列 服务，已经简单实现，可以简单从队列取出消息进行处理
+	 */
+	private ReadMessageQueueService readMessageQueueService;
+	/**
+	 * 写入消息队列 服务，同 读取服务
+	 */
+	private WriteMessageQueueService writeMessageQueueService;
+	/**
+	 * 所有连接的会话服务
+	 */
 	private StatusSessionService statusSessionService;
+	/**
+	 * 服务器开启的端口
+	 */
 	private int port;
 
 	public NIONet(int port, IMessageActions actions) {
 		this.port = port;
-		messageQueueService = new MessageQueueService(actions);
 		statusSessionService = new StatusSessionService();
+		writeMessageQueueService = new WriteMessageQueueService(statusSessionService);
 		connectDaemonService = new ConnectDaemonService(statusSessionService);
+		readMessageQueueService = new ReadMessageQueueService(actions,writeMessageQueueService);
+		//开启主线程
 		new Thread(this, "主NIO处理线程").start();
 	}
 
 	@Override
 	public void run() {
 		logger.info(Thread.currentThread().getName() + "开启...");
+		//开启守护线程
 		connectDaemonService.start();
-		Thread thread = new Thread(messageQueueService, "消息队列服务线程");
-		thread.start();
+		//开启读取和写入的服务线程
+		Thread readThread = new Thread(readMessageQueueService, "读取服务线程");
+		Thread writeThread = new Thread(writeMessageQueueService,"写入服务线程");
+		readThread.start();
+		writeThread.start();
+		//进行NIO处理
 		Selector selector = null;
 		ServerSocketChannel serverChannel = null;
 		try {
 			serverChannel = ServerSocketChannel.open();
 			serverChannel.configureBlocking(false);
 			serverChannel.socket().bind(new InetSocketAddress(port));
+			//打开选择器
 			selector = Selector.open();
+			//在serverChannel上注册该选择器
 			serverChannel.register(selector, SelectionKey.OP_ACCEPT);
 			logger.info("在" + port + "端口开启监听服务!");
+			//有消息准备就绪
 			while (selector.select() > 0) {
 				Iterator<SelectionKey> it = selector.selectedKeys().iterator();
+				//遍历所有准备好的消息
 				while (it.hasNext()) {
 					SelectionKey readyKey = it.next();
+					//如果是连接事件
 					if (readyKey.isAcceptable()) {
 						acceptHandle(readyKey);
-					} else if (readyKey.isReadable()) {
+					} else if (readyKey.isReadable()) {//如果是读取事件
 						readHandle(readyKey);
 					}
 					it.remove();
@@ -68,22 +97,13 @@ public class NIONet implements Runnable, SelectHandler {
 			}
 		} catch (IOException e) {
 			logger.info("在" + port + "端口开启监听服务发生了未知错误!" + e.getMessage());
-			thread.interrupt();
+			//服务器出错，关闭读取和写入线程
+			readThread.interrupt();
+			writeThread.interrupt();
 		}
 		logger.info(Thread.currentThread().getName()+"结束!");
 	}
 
-	public ConnectDaemonService getConnectDaemonService() {
-		return connectDaemonService;
-	}
-
-	public MessageQueueService getMessageQueueService() {
-		return messageQueueService;
-	}
-
-	public StatusSessionService getStatusSessionService() {
-		return statusSessionService;
-	}
 
 	@Override
 	public void acceptHandle(SelectionKey selectionKey) {
@@ -117,7 +137,7 @@ public class NIONet implements Runnable, SelectHandler {
 
 			MessageNode node = new MessageNode(socket.getInetAddress().getHostName(),
 					socket.getPort(), msg);
-			messageQueueService.add(node);
+			readMessageQueueService.add(node);
 
 			logger.debug(String.format("%s:%d的消息队列添加一条消息.", socket.getInetAddress(), socket.getPort()));
 		} catch (IOException e) {
@@ -139,4 +159,21 @@ public class NIONet implements Runnable, SelectHandler {
 		}
 
 	}
+
+	public ConnectDaemonService getConnectDaemonService() {
+		return connectDaemonService;
+	}
+
+	public ReadMessageQueueService getReadMessageQueueService() {
+		return readMessageQueueService;
+	}
+
+	public StatusSessionService getStatusSessionService() {
+		return statusSessionService;
+	}
+
+	public WriteMessageQueueService getWriteMessageQueueService() {
+		return writeMessageQueueService;
+	}
+
 }

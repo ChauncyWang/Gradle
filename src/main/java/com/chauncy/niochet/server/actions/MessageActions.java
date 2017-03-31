@@ -18,10 +18,14 @@ import java.util.stream.Collectors;
  */
 public class MessageActions implements IMessageActions {
 	private static Logger logger = Logger.getLogger(MessageActions.class);
+	/**
+	 * 消息 map 消息类型 ---> 函数表达式
+	 */
 	private Map<NetMessageType, IAction> actions;
 
 	public MessageActions() {
 		actions = new HashMap<>();
+		scanner();
 	}
 
 	/**

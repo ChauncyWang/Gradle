@@ -35,5 +35,6 @@
 
     <mappers>
         <mapper resource="com/chauncy/niochet/server/services/mapper/UserMapper.xml"/>
+        <mapper resource="com/chauncy/niochet/server/services/mapper/FriendMapper.xml"/>
     </mappers>
 </configuration>

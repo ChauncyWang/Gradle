@@ -1,4 +1,4 @@
-package com.chauncy.niochet.entity;
+package com.chauncy.nionetframework.entity;
 
 /**
  * Created by chauncy on 17-3-17.

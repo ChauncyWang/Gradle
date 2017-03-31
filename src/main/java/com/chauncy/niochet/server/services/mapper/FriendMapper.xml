@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="niochet.FriendMapper">
+
+    <!-- 查询有哪些分组 -->
+    <select id="selectFriendGroup" resultMap="groupMapper">
+        SELECT
+            id,
+            name
+        FROM friend_group
+        WHERE u_id = #{id}
+    </select>
+    <!-- 根据分组查询好友信息 -->
+    <select id="selectUserInfo" resultType="UserInfo">
+        SELECT
+            u_id      id,
+            nick_name nickName,
+            signature
+        FROM user_info
+        WHERE u_id IN (
+            SELECT f_id
+            FROM friends
+            WHERE g_id = #{id})
+    </select>
+
+    <!-- 查询好友的 ResultMap -->
+    <resultMap id="groupMapper" type="Friend">
+        <collection property="groups" ofType="FriendGroup">
+            <id property="name" column="name"/>
+            <association property="friend" column="id" select="selectUserInfo"/>
+        </collection>
+    </resultMap>
+
+</mapper>

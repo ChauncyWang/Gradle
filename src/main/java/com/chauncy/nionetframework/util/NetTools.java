@@ -1,4 +1,4 @@
-package com.chauncy.util;
+package com.chauncy.nionetframework.util;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -6,8 +6,6 @@ import java.io.OutputStream;
 import java.net.Socket;
 import java.nio.ByteBuffer;
 import java.nio.channels.SocketChannel;
-
-import static com.chauncy.util.ByteArrayTools.*;
 
 /**
  * 在socket通道中帮助读取和写入对象的类
@@ -26,10 +24,10 @@ public class NetTools {
 		InputStream is = socket.getInputStream();
 		byte[] lengths = new byte[4];
 		is.read(lengths);
-		int length = bytesToInt(lengths);
+		int length = ByteArrayTools.bytesToInt(lengths);
 		byte[] objs = new byte[length];
 		is.read(objs);
-		return bytesToObject(objs);
+		return ByteArrayTools.bytesToObject(objs);
 	}
 
 	/**
@@ -40,8 +38,8 @@ public class NetTools {
 	 */
 	public static void writeObject(Socket socket, Object object) throws IOException {
 		OutputStream os = socket.getOutputStream();
-		byte[] objects = objectToBytes(object);
-		byte[] length = intToBytes(objects.length);
+		byte[] objects = ByteArrayTools.objectToBytes(object);
+		byte[] length = ByteArrayTools.intToBytes(objects.length);
 		os.write(length);
 		os.write(objects);
 
@@ -59,12 +57,12 @@ public class NetTools {
 	public static Object readObject(SocketChannel socketChannel) throws IOException, ClassNotFoundException {
 		ByteBuffer bb = ByteBuffer.allocate(4);
 		socketChannel.read(bb);
-		int length = bytesToInt(bb.array());
+		int length = ByteArrayTools.bytesToInt(bb.array());
 		bb = ByteBuffer.allocate(length);
 		while (bb.hasRemaining()) {
 			socketChannel.read(bb);
 		}
-		Object obj = bytesToObject(bb.array());
+		Object obj = ByteArrayTools.bytesToObject(bb.array());
 		return obj;
 	}
 
@@ -76,9 +74,9 @@ public class NetTools {
 	 * @throws IOException 出现IO错误
 	 */
 	public static void writeObject(SocketChannel socketChannel, Object obj) throws IOException {
-		byte[] bytes = objectToBytes(obj);
+		byte[] bytes = ByteArrayTools.objectToBytes(obj);
 		int length = bytes.length;
-		byte[] lengths = intToBytes(length);
+		byte[] lengths = ByteArrayTools.intToBytes(length);
 		ByteBuffer bb = ByteBuffer.allocate(length + 4).put(lengths).put(bytes);
 		bb.flip();
 		while (bb.hasRemaining()) {

@@ -1,11 +1,12 @@
 package com.chauncy.niochet.server.actions;
 
-import com.chauncy.niochet.entity.NetMessageType;
-import com.chauncy.util.ClassScanner;
+import com.chauncy.nionetframework.action.IAction;
+import com.chauncy.nionetframework.action.IMessageActions;
+import com.chauncy.nionetframework.entity.NetMessageType;
+import com.chauncy.nionetframework.services.StatusSessionService;
+import com.chauncy.nionetframework.util.ClassScanner;
 import org.apache.log4j.Logger;
 
-import java.lang.reflect.Modifier;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -15,13 +16,12 @@ import java.util.stream.Collectors;
  * 所有消息的处理方式都在这里
  * Created by chauncy on 17-3-28.
  */
-public class MessageActions {
+public class MessageActions implements IMessageActions {
 	private static Logger logger = Logger.getLogger(MessageActions.class);
 	private Map<NetMessageType, IAction> actions;
 
 	public MessageActions() {
 		actions = new HashMap<>();
-		scanner();
 	}
 
 	/**

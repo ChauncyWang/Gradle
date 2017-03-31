@@ -1,13 +1,11 @@
 package com.chauncy.niochet.client;
 
-import com.chauncy.niochet.entity.User;
-import com.chauncy.niochet.entity.UserInfo;
-import com.chauncy.niochet.entity.NetMessageType;
-import com.chauncy.niochet.entity.NetMessage;
+import com.chauncy.nionetframework.entity.NetMessageType;
+import com.chauncy.nionetframework.entity.NetMessage;
 
 import java.net.Socket;
 
-import static com.chauncy.util.NetTools.*;
+import static com.chauncy.nionetframework.util.NetTools.*;
 
 /**
  *

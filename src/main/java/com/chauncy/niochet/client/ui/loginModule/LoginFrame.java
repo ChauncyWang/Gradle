@@ -2,9 +2,9 @@ package com.chauncy.niochet.client.ui.loginModule;
 
 import com.chauncy.niochet.client.ui.BaseChetFrame;
 import com.chauncy.niochet.client.ui.HeadImageLabel;
-import com.chauncy.niochet.entity.NetMessage;
-import com.chauncy.niochet.entity.NetMessageType;
-import com.chauncy.util.NetTools;
+import com.chauncy.nionetframework.entity.NetMessage;
+import com.chauncy.nionetframework.entity.NetMessageType;
+import com.chauncy.nionetframework.util.NetTools;
 
 import javax.swing.*;
 import java.awt.*;

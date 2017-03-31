@@ -15,7 +15,7 @@ public class Friend {
 	public Friend() {
 	}
 
-	public Friend( List<FriendGroup> groups) {
+	public Friend(List<FriendGroup> groups) {
 		this.groups = groups;
 	}
 
@@ -26,42 +26,12 @@ public class Friend {
 	public void setGroups(List<FriendGroup> groups) {
 		this.groups = groups;
 	}
-}
 
-/**
- * 分组类
- */
-class FriendGroup {
-	/**
-	 * 分组名
-	 */
-	private String name;
-	/**
-	 * 分组用户信息
-	 */
-	private List<UserInfo> friend;
-
-	public FriendGroup() {
-	}
-
-	public FriendGroup(String name, List<UserInfo> friend) {
-		this.name = name;
-		this.friend = friend;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public List<UserInfo> getFriend() {
-		return friend;
-	}
-
-	public void setFriend(List<UserInfo> friend) {
-		this.friend = friend;
+	@Override
+	public String toString() {
+		return "Friend{" +
+				"groups=" + groups +
+				'}';
 	}
 }
+

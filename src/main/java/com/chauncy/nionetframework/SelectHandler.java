@@ -1,4 +1,4 @@
-package com.chauncy.niochet.server;
+package com.chauncy.nionetframework;
 
 import java.io.IOException;
 import java.nio.channels.SelectionKey;

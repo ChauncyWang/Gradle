@@ -1,9 +1,8 @@
 package com.chauncy.niochet.server.actions;
 
-import com.chauncy.niochet.entity.NetMessageType;
+import com.chauncy.nionetframework.entity.NetMessageType;
 import com.chauncy.niochet.entity.User;
-import com.chauncy.niochet.server.MessageNode;
-import com.chauncy.niochet.server.Session;
+import com.chauncy.nionetframework.entity.MessageNode;
 import org.apache.log4j.Logger;
 
 import java.io.IOException;
@@ -20,7 +19,7 @@ public class RegisterAction extends BaseAction {
 	}
 
 	@Override
-	public void execute(MessageNode node) {
+	public MessageNode execute(MessageNode node) {
 		User user = (User) node.getMessage().obj;
 		String res;
 		if (getUserService().addUser(user)) {
@@ -28,10 +27,6 @@ public class RegisterAction extends BaseAction {
 		} else {
 			res = "注册失败!";
 		}
-		try {
-			writeMessage(node.getIp(), node.getPort(), NetMessageType.RETURN, res);
-		} catch (IOException e) {
-			logger.info(e);
-		}
+		return new MessageNode(node.getIp(), node.getPort(), NetMessageType.RETURN, res);
 	}
 }

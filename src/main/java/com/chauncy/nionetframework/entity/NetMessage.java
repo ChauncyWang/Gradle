@@ -1,4 +1,4 @@
-package com.chauncy.niochet.entity;
+package com.chauncy.nionetframework.entity;
 
 import java.io.Serializable;
 

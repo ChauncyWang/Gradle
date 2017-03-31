@@ -1,8 +1,8 @@
 package com.chauncy.niochet;
 
-import com.chauncy.niochet.entity.User;
-import com.chauncy.niochet.entity.UserInfo;
-import com.chauncy.niochet.server.services.UserService;
+import com.chauncy.niochet.entity.Friend;
+import com.chauncy.niochet.server.services.MybaitsTools;
+import org.apache.ibatis.session.SqlSession;
 
 
 /**
@@ -11,9 +11,11 @@ import com.chauncy.niochet.server.services.UserService;
  */
 public class Test {
 	public static void main(String[] args) {
-		UserInfo userInfo = new UserInfo("111", "昵称", "签名");
-		User user = new User(userInfo.getId(), "密码", userInfo);
-		System.out.println(new UserService().addUser(user));
+		SqlSession sqlSession = MybaitsTools.getSqlSession();
 
+		Friend friend = sqlSession.selectOne(
+				"niochet.FriendMapper.selectFriendGroup", "110");
+
+		System.out.println(friend);
 	}
 }

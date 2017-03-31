@@ -1,4 +1,4 @@
-package com.chauncy.util;
+package com.chauncy.nionetframework.util;
 
 import java.io.*;
 

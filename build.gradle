@@ -74,6 +74,10 @@ dependencies {
 task wrapper(type: Wrapper) {
     gradleVersion = '3.2.1'
 }
+tasks.withType(JavaCompile) {  
+    options.encoding = "UTF-8"  
+} 
+
 //拷贝jar包
 task copyJars(type: Copy) {
     doFirst {
@@ -84,4 +88,13 @@ task copyJars(type: Copy) {
     doLast {
         println "jar包拷贝成功!"
     }
+}
+task ServerMain(type: JavaExec, dependsOn: classes) {
+	classpath = sourceSets.main.runtimeClasspath
+	main = 'com.chauncy.niochet.server.ServerMain'
+}
+
+task ClientMain(type: JavaExec, dependsOn: classes) {
+	classpath = sourceSets.main.runtimeClasspath
+	main = 'com.chauncy.niochet.client.ClientMain'
 }

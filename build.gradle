@@ -74,9 +74,10 @@ dependencies {
 task wrapper(type: Wrapper) {
     gradleVersion = '3.2.1'
 }
-tasks.withType(JavaCompile) {  
-    options.encoding = "UTF-8"  
-} 
+/*
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+} */
 
 //拷贝jar包
 task copyJars(type: Copy) {

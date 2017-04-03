@@ -1,9 +1,9 @@
 package com.chauncy.nionetframework;
 
-import com.chauncy.niochet.entity.StatusSession;
 import com.chauncy.nionetframework.action.IMessageActions;
 import com.chauncy.nionetframework.entity.MessageNode;
 import com.chauncy.nionetframework.entity.NetMessage;
+import com.chauncy.nionetframework.entity.Session;
 import com.chauncy.nionetframework.services.ConnectDaemonService;
 import com.chauncy.nionetframework.services.ReadMessageQueueService;
 import com.chauncy.nionetframework.services.StatusSessionService;
@@ -115,7 +115,7 @@ public class NIONet implements Runnable, SelectHandler {
 			Socket socket = socketChannel.socket();
 
 			//注册会话
-			StatusSession session = statusSessionService.addSession(socket.getInetAddress().getHostName(), socket.getPort(), socketChannel);
+			Session session = statusSessionService.addSession(socket.getInetAddress().getHostName(), socket.getPort(), socketChannel);
 			logger.info(String.format("[%s:%d]连接了...", socket.getInetAddress(), socket.getPort()));
 
 			//设置非阻塞并注册selector选择器,监听输入和输出事件

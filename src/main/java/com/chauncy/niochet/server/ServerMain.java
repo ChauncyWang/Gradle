@@ -11,7 +11,7 @@ import com.chauncy.nionetframework.NIONet;
 public class ServerMain {
 	public static void main(String[] args) throws ClassNotFoundException {
 	    //第一次连接会有延迟，不知道原因呢
-        MybaitsTools.getSqlSession();
+        MybaitsTools.getSqlSession().getConnection();
 		MessageActions messageActions = new MessageActions();
 		NIONet nioSocketThread = new NIONet(10001,messageActions);
 	}

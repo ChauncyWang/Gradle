@@ -1,6 +1,6 @@
 package com.chauncy.nionetframework.services;
 
-import com.chauncy.niochet.entity.StatusSession;
+import com.chauncy.nionetframework.entity.Session;
 
 import java.nio.channels.SocketChannel;
 import java.util.concurrent.ConcurrentHashMap;
@@ -14,7 +14,7 @@ public class StatusSessionService {
 	/**
 	 * 存储 回话信息的Map,用ip+":"+port作为Key
 	 */
-	private ConcurrentHashMap<String, StatusSession> map = null;
+	private ConcurrentHashMap<String, Session> map = null;
 
 	public StatusSessionService() {
 		map = new ConcurrentHashMap<>();
@@ -28,8 +28,8 @@ public class StatusSessionService {
 	 * @param socketChannel 会话的socketChannel
 	 * @return 返回生成的StatusSession对象
 	 */
-	public synchronized StatusSession addSession(String ip, int port, SocketChannel socketChannel) {
-		StatusSession session = new StatusSession(ip, port, socketChannel);
+	public synchronized Session addSession(String ip, int port, SocketChannel socketChannel) {
+		Session session = new Session(ip, port, socketChannel);
 		//以ip+port为主键添加
 		map.put(key(ip, port), session);
 		return session;
@@ -42,7 +42,7 @@ public class StatusSessionService {
 	 * @param port 端口
 	 * @return 获取到的会话, 如果没有返回null
 	 */
-	public StatusSession getSession(String ip, int port) {
+	public Session getSession(String ip, int port) {
 		return map.get(key(ip, port));
 	}
 
@@ -51,7 +51,7 @@ public class StatusSessionService {
 	 *
 	 * @param session 要关闭的会话
 	 */
-	public void closeSession(StatusSession session) {
+	public void closeSession(Session session) {
 		closeSession(session.getIp(), session.getPort());
 	}
 
@@ -70,7 +70,7 @@ public class StatusSessionService {
 	 *
 	 * @return getter map
 	 */
-	public ConcurrentHashMap<String, StatusSession> getMap() {
+	public ConcurrentHashMap<String, Session> getMap() {
 		return map;
 	}
 

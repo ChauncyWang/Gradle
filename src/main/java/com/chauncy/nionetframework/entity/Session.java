@@ -20,6 +20,12 @@ public class Session {
 	 */
 	private SocketChannel socketChannel;
 
+	/**
+	 * 附加信息，为不同的场合添加不同的附加信息
+	 */
+	private Object attach;
+
+
 	public Session() {
 	}
 
@@ -53,5 +59,13 @@ public class Session {
 
 	public void setSocketChannel(SocketChannel socketChannel) {
 		this.socketChannel = socketChannel;
+	}
+
+	public Object getAttach() {
+		return attach;
+	}
+
+	public void setAttach(Object attach) {
+		this.attach = attach;
 	}
 }

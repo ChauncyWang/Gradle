@@ -1,27 +1,25 @@
-package com.chauncy.nionetframework;
+package com.chauncy.nionetframework.event;
 
-import java.io.IOException;
-import java.nio.channels.SelectionKey;
 
 /**
  * 处理已经准备好的SelectionKey的接口
  * 处理 网络连接 NIO 的各种状态
  * Created by chauncy on 17-3-18.
  */
-public interface SelectHandler {
+public interface SelectListener {
 	/**
 	 * 处理准备的 Socket 的 accept()
 	 *
-	 * @param selectionKey 准备好的 SelectionKey
+	 * @param event 事件消息
 	 */
-	void acceptHandle(SelectionKey selectionKey);
+	void accept(SelectEvent event);
 
 	/**
 	 * 处理准备的 Socket 的 read()
 	 *
-	 * @param selectionKey 准备好的 SelectionKey
+	 * @param event 事件消息
 	 */
-	void readHandle(SelectionKey selectionKey);
+	void read(SelectEvent event);
 
 	/**
 	 * 处理准备的 Socket 的 write()

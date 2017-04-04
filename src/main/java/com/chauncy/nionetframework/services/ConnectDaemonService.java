@@ -1,6 +1,6 @@
 package com.chauncy.nionetframework.services;
 
-import com.chauncy.nionetframework.entity.Session;
+import com.chauncy.nionetframework.entity.IoSession;
 import org.apache.log4j.Logger;
 
 import java.io.IOException;
@@ -13,9 +13,9 @@ import java.util.Map;
  */
 public class ConnectDaemonService extends Thread {
 	private Logger logger = Logger.getLogger(ConnectDaemonService.class);
-	private StatusSessionService statusSessionService = null;
+	private IoSessionService statusSessionService = null;
 
-	public ConnectDaemonService(StatusSessionService statusSessionService) {
+	public ConnectDaemonService(IoSessionService statusSessionService) {
 		super("连接守护服务");
 		this.statusSessionService = statusSessionService;
 		this.setDaemon(true);
@@ -25,11 +25,11 @@ public class ConnectDaemonService extends Thread {
 	public void run() {
 		logger.info(getName() + "开启...");
 		while (true) {
-			Iterator<Map.Entry<String, Session>> entrys =
+			Iterator<Map.Entry<String, IoSession>> entrys =
 					statusSessionService.getMap().entrySet().iterator();
 			while (entrys.hasNext()) {
-				Map.Entry<String, Session> entry = entrys.next();
-				Session session = entry.getValue();
+				Map.Entry<String, IoSession> entry = entrys.next();
+				IoSession session = entry.getValue();
 				try {
 					session.getSocketChannel().socket().sendUrgentData(0xFF);
 				} catch (IOException e) {

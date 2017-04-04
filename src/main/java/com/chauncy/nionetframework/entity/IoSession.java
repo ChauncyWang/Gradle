@@ -6,7 +6,7 @@ import java.nio.channels.SocketChannel;
  * 会话,记录连接到服务器的ip,port所对应的socket channel
  * Created by chauncy on 17-3-21.
  */
-public class Session {
+public class IoSession {
 	/**
 	 * ip地址
 	 */
@@ -26,10 +26,10 @@ public class Session {
 	private Object attach;
 
 
-	public Session() {
+	public IoSession() {
 	}
 
-	public Session(String ip, int port, SocketChannel socketChannel) {
+	public IoSession(String ip, int port, SocketChannel socketChannel) {
 		this();
 		this.ip = ip;
 		this.port = port;
@@ -71,7 +71,7 @@ public class Session {
 
 	@Override
 	public String toString() {
-		return "Session{" +
+		return "IoSession{" +
 				"ip='" + ip + '\'' +
 				", port=" + port +
 				", socketChannel=" + socketChannel +

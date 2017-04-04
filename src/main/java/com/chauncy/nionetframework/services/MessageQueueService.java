@@ -9,7 +9,6 @@ import org.apache.log4j.Logger;
  * Created by chauncy on 17-3-31.
  */
 public class MessageQueueService {
-	private static Logger logger = Logger.getLogger(MessageQueueService.class);
 	/**
 	 * 消息队列--读取
 	 */

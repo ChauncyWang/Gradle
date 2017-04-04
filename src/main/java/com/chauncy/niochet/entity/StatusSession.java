@@ -1,6 +1,6 @@
 package com.chauncy.niochet.entity;
 
-import com.chauncy.nionetframework.entity.Session;
+import com.chauncy.nionetframework.entity.IoSession;
 
 import java.nio.channels.SocketChannel;
 
@@ -10,7 +10,7 @@ import java.nio.channels.SocketChannel;
  * 以及状态
  * Created by chauncy on 17-3-21.
  */
-public class StatusSession extends Session {
+public class StatusSession extends IoSession {
 	/**
 	 * 登录的用户,没有登录用户则为空
 	 */

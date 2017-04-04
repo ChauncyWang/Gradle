@@ -1,6 +1,6 @@
 package com.chauncy.nionetframework.services;
 
-import com.chauncy.nionetframework.entity.Session;
+import com.chauncy.nionetframework.entity.IoSession;
 
 import java.nio.channels.SocketChannel;
 import java.util.Iterator;
@@ -12,13 +12,13 @@ import java.util.concurrent.ConcurrentHashMap;
  * 为ip socketChannel 的状态回话提供服务
  * Created by chauncy on 17-3-21.
  */
-public class StatusSessionService {
+public class IoSessionService {
 	/**
 	 * 存储 回话信息的Map,用ip+":"+port作为Key
 	 */
-	private ConcurrentHashMap<String, Session> map = null;
+	private ConcurrentHashMap<String, IoSession> map = null;
 
-	public StatusSessionService() {
+	public IoSessionService() {
 		map = new ConcurrentHashMap<>();
 	}
 
@@ -30,8 +30,8 @@ public class StatusSessionService {
 	 * @param socketChannel 会话的socketChannel
 	 * @return 返回生成的StatusSession对象
 	 */
-	public synchronized Session addSession(String ip, int port, SocketChannel socketChannel) {
-		Session session = new Session(ip, port, socketChannel);
+	public synchronized IoSession addSession(String ip, int port, SocketChannel socketChannel) {
+		IoSession session = new IoSession(ip, port, socketChannel);
 		//以ip+port为主键添加
 		map.put(key(ip, port), session);
 		return session;
@@ -44,7 +44,7 @@ public class StatusSessionService {
 	 * @param port 端口
 	 * @return 获取到的会话, 如果没有返回null
 	 */
-	public Session getSession(String ip, int port) {
+	public IoSession getSession(String ip, int port) {
 		return map.get(key(ip, port));
 	}
 
@@ -53,7 +53,7 @@ public class StatusSessionService {
 	 *
 	 * @param session 要关闭的会话
 	 */
-	public void closeSession(Session session) {
+	public void closeSession(IoSession session) {
 		closeSession(session.getIp(), session.getPort());
 	}
 
@@ -72,16 +72,16 @@ public class StatusSessionService {
 	 *
 	 * @return getter map
 	 */
-	public ConcurrentHashMap<String, Session> getMap() {
+	public ConcurrentHashMap<String, IoSession> getMap() {
 		return map;
 	}
 
 	public String getAll() {
-		Iterator<Map.Entry<String,Session>> iterator = map.entrySet().iterator();
+		Iterator<Map.Entry<String,IoSession>> iterator = map.entrySet().iterator();
 		StringBuffer sb = new StringBuffer();
 
 		while (iterator.hasNext()){
-			Map.Entry<String,Session> entry = iterator.next();
+			Map.Entry<String,IoSession> entry = iterator.next();
 			sb.append(entry.getValue().toString());
 			sb.append("\n");
 		}

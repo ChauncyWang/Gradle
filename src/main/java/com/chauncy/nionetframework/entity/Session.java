@@ -68,4 +68,14 @@ public class Session {
 	public void setAttach(Object attach) {
 		this.attach = attach;
 	}
+
+	@Override
+	public String toString() {
+		return "Session{" +
+				"ip='" + ip + '\'' +
+				", port=" + port +
+				", socketChannel=" + socketChannel +
+				", attach=" + attach +
+				'}';
+	}
 }

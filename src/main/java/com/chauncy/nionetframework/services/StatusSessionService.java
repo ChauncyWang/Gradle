@@ -3,6 +3,8 @@ package com.chauncy.nionetframework.services;
 import com.chauncy.nionetframework.entity.Session;
 
 import java.nio.channels.SocketChannel;
+import java.util.Iterator;
+import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
@@ -72,6 +74,19 @@ public class StatusSessionService {
 	 */
 	public ConcurrentHashMap<String, Session> getMap() {
 		return map;
+	}
+
+	public String getAll() {
+		Iterator<Map.Entry<String,Session>> iterator = map.entrySet().iterator();
+		StringBuffer sb = new StringBuffer();
+
+		while (iterator.hasNext()){
+			Map.Entry<String,Session> entry = iterator.next();
+			sb.append(entry.getValue().toString());
+			sb.append("\n");
+		}
+
+		return new String(sb);
 	}
 
 	/**

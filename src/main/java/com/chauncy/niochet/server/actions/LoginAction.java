@@ -22,7 +22,6 @@ public class LoginAction extends BaseAction {
 	public MessageNode execute(MessageNode node) {
 		String[] strs = (String[]) node.getMessage().obj;
 		UserInfo user = getUserService().login(strs[0], strs[1]);
-
 		return new MessageNode(node.getIp(), node.getPort(), NetMessageType.RETURN, user);
 	}
 }

@@ -1,7 +1,6 @@
 package com.chauncy.nionetframework.services;
 
-import com.chauncy.niochet.entity.StatusSession;
-import com.chauncy.nionetframework.NIONet;
+import com.chauncy.nionetframework.entity.Session;
 import org.apache.log4j.Logger;
 
 import java.io.IOException;
@@ -26,11 +25,11 @@ public class ConnectDaemonService extends Thread {
 	public void run() {
 		logger.info(getName() + "开启...");
 		while (true) {
-			Iterator<Map.Entry<String, StatusSession>> entrys =
+			Iterator<Map.Entry<String, Session>> entrys =
 					statusSessionService.getMap().entrySet().iterator();
 			while (entrys.hasNext()) {
-				Map.Entry<String, StatusSession> entry = entrys.next();
-				StatusSession session = entry.getValue();
+				Map.Entry<String, Session> entry = entrys.next();
+				Session session = entry.getValue();
 				try {
 					session.getSocketChannel().socket().sendUrgentData(0xFF);
 				} catch (IOException e) {

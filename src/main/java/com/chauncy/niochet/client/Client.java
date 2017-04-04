@@ -17,14 +17,16 @@ public class Client {
 		try {
 			Socket socket = new Socket(ip, port);
 
-			NetMessage netMessage = new NetMessage(NetMessageType.LOGIN, new String[]{"110","110"});
-			System.out.println(System.currentTimeMillis());
-			writeObject(socket, netMessage);
-			netMessage = (NetMessage) readObject(socket);
-			System.out.println(netMessage);
-			System.out.println(System.currentTimeMillis());
+			while(true) {
+				NetMessage netMessage = new NetMessage(NetMessageType.LOGIN, new String[]{"110", "110"});
+				System.out.println(System.currentTimeMillis());
+				writeObject(socket, netMessage);
+				netMessage = (NetMessage) readObject(socket);
+				System.out.println(netMessage);
+				System.out.println(System.currentTimeMillis());
 
-
+				Thread.sleep(5000);
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

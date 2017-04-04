@@ -1,4 +1,4 @@
-package com.chauncy.nionetframework.action;
+package com.chauncy.niochet.server.actions;
 
 
 import com.chauncy.nionetframework.entity.MessageNode;

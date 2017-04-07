@@ -5,15 +5,20 @@
     <title>Title</title>
 </head>
 <body>
-    <script type="text/javascript">
-        //注释
-        alert("第一");
+    <script>
+        function a() {
+            var x = document.forms["form"]["name"].value;
+            alert(x);
+            if(isNaN(x)){
+                alert("bu是数字!")
+            }else{
+                alert("是数字！");
+            }
+        }
     </script>
-    <h1>
-        H1标签
-    </h1>
-    <script type="text/javascript">
-        alert("第二");
-    </script>
+    <form name="form" onsubmit="return a()" method="post">
+        请输入:<input type="text" name="name">
+        <input type="submit">
+    </form>
 </body>
 </html>

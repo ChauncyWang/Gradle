@@ -35,9 +35,7 @@ public class UserService implements UserDao {
 		User user = getUser(id, password);
 		UserInfo info;
 		if(user == null){
-			info = new UserInfo();
-			info.setId(null);
-			return info;
+			return null;
 		}
 		return user.getUserInfo();
 	}

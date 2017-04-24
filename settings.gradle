@@ -1,4 +1,5 @@
 rootProject.name = 'main'
 include 'blog'
 include 'FoC'
+include 'Tomcat'
 

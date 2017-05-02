@@ -2,18 +2,15 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/FoC/FoC.iml" filepath="$PROJECT_DIR$/.idea/modules/FoC/FoC.iml" group="FoC" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/FoC/FoC_main.iml" filepath="$PROJECT_DIR$/.idea/modules/FoC/FoC_main.iml" group="FoC" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/FoC/FoC_test.iml" filepath="$PROJECT_DIR$/.idea/modules/FoC/FoC_test.iml" group="FoC" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Tomcat/Tomcat.iml" filepath="$PROJECT_DIR$/.idea/modules/Tomcat/Tomcat.iml" group="Tomcat" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Tomcat/Tomcat_main.iml" filepath="$PROJECT_DIR$/.idea/modules/Tomcat/Tomcat_main.iml" group="Tomcat" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Tomcat/Tomcat_test.iml" filepath="$PROJECT_DIR$/.idea/modules/Tomcat/Tomcat_test.iml" group="Tomcat" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/blog/blog.iml" filepath="$PROJECT_DIR$/.idea/modules/blog/blog.iml" group="blog" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/blog/blog_main.iml" filepath="$PROJECT_DIR$/.idea/modules/blog/blog_main.iml" group="blog" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/blog/blog_test.iml" filepath="$PROJECT_DIR$/.idea/modules/blog/blog_test.iml" group="blog" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/main.iml" filepath="$PROJECT_DIR$/.idea/modules/main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/main_main.iml" filepath="$PROJECT_DIR$/.idea/modules/main_main.iml" group="main" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/main_test.iml" filepath="$PROJECT_DIR$/.idea/modules/main_test.iml" group="main" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/tomcat/tomcat.iml" filepath="$PROJECT_DIR$/.idea/modules/tomcat/tomcat.iml" group="tomcat" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/tomcat/tomcat_main.iml" filepath="$PROJECT_DIR$/.idea/modules/tomcat/tomcat_main.iml" group="tomcat" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/tomcat/tomcat_test.iml" filepath="$PROJECT_DIR$/.idea/modules/tomcat/tomcat_test.iml" group="tomcat" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/web/web.iml" filepath="$PROJECT_DIR$/.idea/modules/web/web.iml" group="web" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/web/web_main.iml" filepath="$PROJECT_DIR$/.idea/modules/web/web_main.iml" group="web" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/web/web_test.iml" filepath="$PROJECT_DIR$/.idea/modules/web/web_test.iml" group="web" />
     </modules>
   </component>
 </project>

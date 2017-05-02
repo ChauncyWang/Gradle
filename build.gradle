@@ -8,21 +8,13 @@ sourceCompatibility = 1.8
 sourceSets {
     main {
         java {
-            srcDirs = ['src/main/java']
+            srcDirs = ['src/java']
         }
         groovy {
-            srcDirs = ['src/main/groovy']
+            srcDirs = ['src/groovy']
         }
         resources {
-            srcDirs = ['src/main/res', 'src/main/java']
-        }
-    }
-    test {
-        java {
-            srcDir 'src/test/java'
-        }
-        resources {
-            srcDir 'src/test/res'
+            srcDirs = ['src/res', 'src/java','src/groovy']
         }
     }
 }

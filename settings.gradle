@@ -1,5 +1,4 @@
 rootProject.name = 'main'
-include 'blog'
-include 'FoC'
-include 'Tomcat'
+include 'tomcat'
+include 'web'
 

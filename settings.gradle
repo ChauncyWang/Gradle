@@ -1,4 +1,4 @@
 rootProject.name = 'main'
 include 'tomcat'
-include 'web'
+include 'HOI4'
 

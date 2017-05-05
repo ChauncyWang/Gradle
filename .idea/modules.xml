@@ -2,15 +2,13 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../untitled/.idea/modules/HOI4.iml" filepath="$PROJECT_DIR$/../untitled/.idea/modules/HOI4.iml" group="HOI4" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/HOI4/HOI4_main.iml" filepath="$PROJECT_DIR$/.idea/modules/HOI4/HOI4_main.iml" group="HOI4" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/HOI4/HOI4_test.iml" filepath="$PROJECT_DIR$/.idea/modules/HOI4/HOI4_test.iml" group="HOI4" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/main.iml" filepath="$PROJECT_DIR$/.idea/modules/main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/main_main.iml" filepath="$PROJECT_DIR$/.idea/modules/main_main.iml" group="main" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/main_test.iml" filepath="$PROJECT_DIR$/.idea/modules/main_test.iml" group="main" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/tomcat/tomcat.iml" filepath="$PROJECT_DIR$/.idea/modules/tomcat/tomcat.iml" group="tomcat" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/tomcat/tomcat_main.iml" filepath="$PROJECT_DIR$/.idea/modules/tomcat/tomcat_main.iml" group="tomcat" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/tomcat/tomcat_test.iml" filepath="$PROJECT_DIR$/.idea/modules/tomcat/tomcat_test.iml" group="tomcat" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/web/web.iml" filepath="$PROJECT_DIR$/.idea/modules/web/web.iml" group="web" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/web/web_main.iml" filepath="$PROJECT_DIR$/.idea/modules/web/web_main.iml" group="web" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/web/web_test.iml" filepath="$PROJECT_DIR$/.idea/modules/web/web_test.iml" group="web" />
     </modules>
   </component>
 </project>

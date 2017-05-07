@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: org.java.net.substance:substance:6.0">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.java.net.substance/substance/6.0/ea58fee4870829b035c333cea9e56fdbdf548944/substance-6.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.java.net.substance/substance/6.0/6baa815bf29c81cf120daf36faf435658289cfc9/substance-6.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: net.java.dev.laf-widget:laf-widget:5.0">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/net.java.dev.laf-widget/laf-widget/5.0/dad5f96f8c1901a2137ab5a2bcd0e645105ed874/laf-widget-5.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/net.java.dev.laf-widget/laf-widget/5.0/b53388b3dbb95a97b09528fc56f1a1716b32527d/laf-widget-5.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

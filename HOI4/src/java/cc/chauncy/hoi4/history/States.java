@@ -1,5 +1,7 @@
 package cc.chauncy.hoi4.history;
 
+import cc.chauncy.hoi4.common.Resources;
+
 /**
  * 地区
  * Created by Chauncy on 2017/5/5.

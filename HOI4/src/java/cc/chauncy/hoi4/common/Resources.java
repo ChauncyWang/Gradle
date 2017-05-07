@@ -1,4 +1,4 @@
-package cc.chauncy.hoi4.history;
+package cc.chauncy.hoi4.common;
 
 /**
  * 地区资源

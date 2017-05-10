@@ -1,0 +1,53 @@
+apply plugin: 'groovy'
+apply plugin: 'scala'
+
+sourceSets {
+    main {
+        groovy {
+            srcDirs('src/java','src/groovy')
+        }
+        scala {
+            srcDirs('src/java','src/scala')
+        }
+        resources {
+            srcDirs("src/res")
+        }
+    }
+}
+
+repositories {
+    maven {
+        url 'http://maven.aliyun.com/nexus/content/groups/public/'
+    }
+    maven {
+        url 'http://repo.springsource.org/libs-release-local/'
+    }
+    mavenCentral()
+}
+//依赖
+dependencies {
+    // https://mvnrepository.com/artifact/org.java.net.substance/substance
+    compile group: 'org.java.net.substance', name: 'substance', version: '6.0'
+    // https://mvnrepository.com/artifact/org.codehaus.groovy/groovy-all
+    compile group: 'org.codehaus.groovy', name: 'groovy-all', version: '2.4.7'
+    // https://mvnrepository.com/artifact/org.scala-lang/scala-library
+    compile group: 'org.scala-lang', name: 'scala-library', version: '2.12.1'
+
+    compile 'junit:junit:4.12'
+}
+
+tasks.withType(GroovyCompile) {
+    groovyOptions.encoding = "UTF-8"
+}
+
+//拷贝jar包
+task copyJars(type: Copy) {
+    doFirst {
+        println "开始拷贝jar包到lib文件夹......"
+    }
+    from configurations.runtime
+    into 'lib'
+    doLast {
+        println "jar包拷贝成功!"
+    }
+}

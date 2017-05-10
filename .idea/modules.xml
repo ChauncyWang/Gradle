@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/../untitled/.idea/modules/HOI4.iml" filepath="$PROJECT_DIR$/../untitled/.idea/modules/HOI4.iml" group="HOI4" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/HOI4/HOI4.iml" filepath="$PROJECT_DIR$/.idea/modules/HOI4/HOI4.iml" group="HOI4" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/HOI4/HOI4_main.iml" filepath="$PROJECT_DIR$/.idea/modules/HOI4/HOI4_main.iml" group="HOI4" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/HOI4/HOI4_test.iml" filepath="$PROJECT_DIR$/.idea/modules/HOI4/HOI4_test.iml" group="HOI4" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/main.iml" filepath="$PROJECT_DIR$/.idea/modules/main.iml" />

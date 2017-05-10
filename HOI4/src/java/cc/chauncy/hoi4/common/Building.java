@@ -1,7 +1,5 @@
 package cc.chauncy.hoi4.common;
 
-import cc.chauncy.hoi4.SharedBuilding;
-
 import java.util.Vector;
 
 /**

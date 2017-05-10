@@ -61,11 +61,6 @@ dependencies {
 //  httpPort = 9090
 //  contextPath = 'Gradle'
 //}
-
-//进行wrapper包装
-task wrapper(type: Wrapper) {
-    gradleVersion = '3.2.1'
-}
 /*
 tasks.withType(JavaCompile) {
     options.encoding = "UTF-8"

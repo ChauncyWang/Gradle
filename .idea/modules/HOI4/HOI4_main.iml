@@ -3,6 +3,9 @@
   <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8">
     <output url="file://$MODULE_DIR$/../../../HOI4/build/classes/main" />
     <exclude-output />
+    <content url="file://$MODULE_DIR$/../../../HOI4/resources">
+      <sourceFolder url="file://$MODULE_DIR$/../../../HOI4/resources" type="java-resource" />
+    </content>
     <content url="file://$MODULE_DIR$/../../../HOI4/src/groovy">
       <sourceFolder url="file://$MODULE_DIR$/../../../HOI4/src/groovy" isTestSource="false" />
     </content>
@@ -14,9 +17,6 @@
       <sourceFolder url="file://$MODULE_DIR$/../../../HOI4/src/main/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../../HOI4/src/main/scala" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../../HOI4/src/main/resources" type="java-resource" />
-    </content>
-    <content url="file://$MODULE_DIR$/../../../HOI4/src/res">
-      <sourceFolder url="file://$MODULE_DIR$/../../../HOI4/src/res" type="java-resource" />
     </content>
     <content url="file://$MODULE_DIR$/../../../HOI4/src/scala">
       <sourceFolder url="file://$MODULE_DIR$/../../../HOI4/src/scala" isTestSource="false" />

@@ -10,7 +10,7 @@ sourceSets {
             srcDirs('src/java','src/scala')
         }
         resources {
-            srcDirs("src/res")
+            srcDirs("resources")
         }
     }
 }

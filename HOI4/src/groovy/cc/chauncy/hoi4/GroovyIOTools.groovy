@@ -12,7 +12,7 @@ class GroovyIOTools {
      * @return 文件内容
      */
     static def readAll(file,encoding="UTF8"){
-        println(new File(".").getAbsolutePath())
-        new File("../"+file).getText(encoding)
+        def rootPath = "D:/Idea/Gradle/HOI4/resources/"
+        new File(rootPath + file).getText(encoding)
     }
 }

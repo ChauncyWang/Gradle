@@ -8,6 +8,6 @@ import cc.chauncy.hoi4.tools.ResourcesTools;
  */
 public class Main {
 	public static void main(String[] args){
-		GroovyIOTools.readAll("res/states/2-Italy.txt");
+		System.out.println(GroovyIOTools.readAll("states/2-Italy.txt"));
 	}
 }

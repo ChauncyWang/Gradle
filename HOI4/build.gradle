@@ -30,8 +30,9 @@ dependencies {
     compile group: 'org.java.net.substance', name: 'substance', version: '6.0'
     // https://mvnrepository.com/artifact/org.codehaus.groovy/groovy-all
     compile group: 'org.codehaus.groovy', name: 'groovy-all', version: '2.4.7'
-    // https://mvnrepository.com/artifact/org.scala-lang/scala-library
-    compile group: 'org.scala-lang', name: 'scala-library', version: '2.12.1'
+    // https://mvnrepository.com/artifact/org.scala-lang/scala-swing
+    compile group: 'org.scala-lang', name: 'scala-swing', version: '2.10.6'
+
 
     compile 'junit:junit:4.12'
 }

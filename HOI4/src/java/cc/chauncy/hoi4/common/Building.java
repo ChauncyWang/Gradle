@@ -9,7 +9,7 @@ import java.util.Vector;
 public class Building {
 	private StateBuilding stateBuilding = new StateBuilding();//地区建筑
 	private SharedBuilding sharedBuilding = new SharedBuilding();//共享的建筑
-	private Vector<ProvinceBuild> provinceBuilds = new Vector<>();//特殊区块建筑
+	private Vector<ProvinceBuilding> provinceBuilds = new Vector<>();//特殊区块建筑
 
 	public Building() {
 	}
@@ -19,7 +19,7 @@ public class Building {
 		String str = "building = {\n" +
 				stateBuilding + "\n" +
 				sharedBuilding + "\n";
-		for(ProvinceBuild provinceBuild:provinceBuilds){
+		for(ProvinceBuilding provinceBuild:provinceBuilds){
 			str += provinceBuild;
 		}
 
@@ -27,7 +27,7 @@ public class Building {
 		return str;
 	}
 
-	public void addProvinceBuilding(ProvinceBuild provinceBuild) {
+	public void addProvinceBuilding(ProvinceBuilding provinceBuild) {
 		provinceBuilds.add(provinceBuild);
 	}
 

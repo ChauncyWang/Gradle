@@ -4,13 +4,13 @@ package cc.chauncy.hoi4.common;
  * 小区块建筑，每个小区块里的建筑
  * Created by Chauncy on 2017/5/7.
  */
-public class ProvinceBuild {
+public class ProvinceBuilding {
 	private int state_id;
 	private int naval_base;//海军基地
 	private int bunker;//陆上要塞
 	private int coastal_bunker;//海岸要塞
 
-	public ProvinceBuild(int state_id) {
+	public ProvinceBuilding(int state_id) {
 		this.state_id = state_id;
 	}
 
